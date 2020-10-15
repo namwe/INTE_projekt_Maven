@@ -9,6 +9,14 @@ public abstract class Equipment implements Attackable {
         this.stats = stats;
     }
 
+    public boolean isEquipped() {
+        return equipped;
+    }
+
+    public void setEquipped(boolean equipped) {
+        this.equipped = equipped;
+    }
+
     public StatEquipment getStats() {
         return stats;
     }

@@ -9,7 +9,6 @@ public class Sword extends Equipment {
     }
 
 
-
     public void damage() {
 
     }
