@@ -9,5 +9,6 @@ public class Player {
     public Player(String name) {
         this.name = name;
         playerStats = new Stat(100,50);
+        equipment = new Sword();
     }
 }
