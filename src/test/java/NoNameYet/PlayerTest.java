@@ -24,8 +24,8 @@ class PlayerTest {
     public void Player_puts_on_equipment_with_no_equipment_of_same_type_already_equipped() {
         Player player = new Player("Gladiator");
         Equipment eq = new Armor(new StatEquipment(3,10));
-        boolean expected = true;
-        assertEquals(expected, player.putOn(eq));
+        player.putOn(eq);
+        assertEquals(true, player.getEquipment().isEquipped());
     }
 
 }

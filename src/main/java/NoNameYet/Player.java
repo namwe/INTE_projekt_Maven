@@ -17,7 +17,11 @@ public class Player {
     }
 
     public void putOn(Equipment equipment) {
-
+        if (equipment.isEquipped()) {
+            //kasta undantag elr nåt. men svärd kan man ha två stycken equippade
+        } else {
+            equipment.setEquipped(true);
+        }
     }
 
     public Equipment getEquipment() {
