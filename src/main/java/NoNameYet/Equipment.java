@@ -8,4 +8,8 @@ public abstract class Equipment implements Attackable {
         this.equipped = false;
         this.stats = stats;
     }
+
+    public StatEquipment getStats() {
+        return stats;
+    }
 }

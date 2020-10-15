@@ -5,7 +5,16 @@ public class StatEquipment {
     private int mana;
 
     public StatEquipment(int condition, int mana) {
-        this.condition = condition;
-        this.mana = mana;
+        if (condition < 0 || condition > 10) {
+            throw new IllegalArgumentException();
+        } else {
+            this.condition = condition;
+        }
+        if (mana < 0 || mana > 10) {
+            throw new IllegalArgumentException();
+        } else {
+            this.mana = mana;
+        }
+
     }
 }
