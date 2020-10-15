@@ -17,4 +17,12 @@ public class StatEquipment {
         }
 
     }
+
+    public int getCondition() {
+        return condition;
+    }
+
+    public int getMana() {
+        return mana;
+    }
 }
