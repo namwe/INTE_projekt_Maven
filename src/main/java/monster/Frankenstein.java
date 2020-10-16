@@ -2,11 +2,12 @@ package monster;
 
 public class Frankenstein extends Monster {
 
-	//singleton -> här behövs test-tear-down-kod som sätter instansen till null
+	private static final int MAXSTRENGTH = 60;
 	private static Frankenstein INSTANCE = null;
+
 	
 	private Frankenstein() {
-		super(60,20,30);
+		super(MAXSTRENGTH,20,30);
 	}
 	
 	public static Frankenstein getInstance() {
@@ -16,8 +17,8 @@ public class Frankenstein extends Monster {
 		return INSTANCE;
 	}
 	
-		
-	public void hurtFrankenstein() {  //ej klar
+	
+	public void hurtFrankenstein() { 
 		if (this.getStrength() > 1) {
 		int currentStrength = this.getStrength();
 		int newStrength = (int) (currentStrength * 0.9);
@@ -32,7 +33,7 @@ public class Frankenstein extends Monster {
 	
 	 public void revive(){    
 		 if (this.strength == 0)
-	    		this.strength = 60;
+	    		this.strength = MAXSTRENGTH;
 	    }
 	 
 	 

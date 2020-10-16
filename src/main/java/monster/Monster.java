@@ -20,9 +20,6 @@ public abstract class Monster {
     	return strength; 
     }
     
-    protected void setStrength(int strength) { //för test - inte ok förmodligen
-    	this.strength = strength;
-      }
     
     public int getSpeed() {
     	return speed;

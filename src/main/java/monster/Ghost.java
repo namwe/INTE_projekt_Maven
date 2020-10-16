@@ -5,14 +5,16 @@ public class Ghost extends Monster {
 	private boolean invisible;
 	private int age;
 	private final static int MAXAGE = 10000; 
+	private final static int MAXSTRENGTH = 70; 
 	
 	public Ghost(int age) {	
-		super((age > 100) ? 70 : 50, 60, 20);
+		super((age > 100) ? MAXSTRENGTH : 50, 60, 20);
 		this.age = age;
 		if (this.age < 0 || this.age > MAXAGE) 
 			throw new IllegalArgumentException("Age " + this.age + " not allowed "); 
 	}
 		
+
 	
 	public boolean isInvisible(){
 	return invisible;	
@@ -39,5 +41,8 @@ public class Ghost extends Monster {
 		return super.toString() + " " + invisibleToString(); 
 		
 	}
+
+
+	
 
 }
