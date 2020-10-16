@@ -2,7 +2,9 @@ package level;
 
 public class Wall extends RoomTile{
 
+    public static final char CHAR_REPRESENTATION = '#';
+
     public Wall() {
-        super('#',true);
+        super(CHAR_REPRESENTATION,true);
     }
 }
