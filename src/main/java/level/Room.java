@@ -7,50 +7,53 @@ import java.util.Map;
 public class Room {
 
     private static final int WIDTH = 9, HEIGHT = 9;
-    private char[][] layout;
-    private Map<RoomType, char[][]> roomTemplates = new HashMap<>();
+    private RoomTile[][] layout;
+    private Map<RoomType, RoomTile[][]> roomTemplates = new HashMap<>();
 
-    public Room(char[][] layout) {
-        if (!dimentionsAreOk(layout)){
+    public Room(RoomTile[][] layout) {
+        if (!dimentionsAreOk(layout)) {
             throw new IllegalArgumentException();
         }
         this.layout = layout;
     }
 
-    public Room(RoomType roomType){
+    public Room(RoomType roomType) {
         generateRoomTemplates();
         this.layout = roomTemplates.get(roomType);
     }
 
     //Will be moved
-    private void generateRoomTemplates(){
+    private void generateRoomTemplates() {
         roomTemplates.put(RoomType.DEFAULT_ROOM, roomWithWalls());
     }
 
-    private char[][] roomWithWalls(){
-        char[][] newLayout = new char[HEIGHT][WIDTH];
+    private RoomTile[][] roomWithWalls() {
+        RoomTile[][] newLayout = new RoomTile[HEIGHT][WIDTH];
 
         for (int i = 0; i < WIDTH; i++) {
-            newLayout[0][i] = '#';
+            newLayout[0][i] = new Wall();
         }
-        for (int i = 0; i < HEIGHT; i++) {
-            newLayout[i][0] = '#';
-            newLayout[i][WIDTH-1] = '#';
+        for (int i = 1; i < HEIGHT - 1; i++) {
+            newLayout[i][0] = new Wall();
+            for (int j = 1; j < WIDTH - 1; j++) {
+                newLayout[i][j] = new Air();
+            }
+            newLayout[i][WIDTH - 1] = new Wall();
         }
         for (int i = 0; i < WIDTH; i++) {
-            newLayout[HEIGHT-1][i] = '#';
+            newLayout[HEIGHT - 1][i] = new Wall();
         }
 
         return newLayout;
     }
 
-    private boolean dimentionsAreOk(char[][] layout) {
+    private boolean dimentionsAreOk(RoomTile[][] layout) {
         if (layout.length != HEIGHT) {
             return false;
         }
 
-        for (char[] chars : layout) {
-            if (chars.length != WIDTH) {
+        for (RoomTile[] row : layout) {
+            if (row.length != WIDTH) {
                 return false;
             }
         }
@@ -60,9 +63,9 @@ public class Room {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (char[] chars : layout) {
-            for (char aChar : chars) {
-                sb.append(aChar);
+        for (RoomTile[] row : layout) {
+            for (RoomTile tile : row) {
+                sb.append(tile);
                 sb.append(' ');
             }
             sb.append("\n");
