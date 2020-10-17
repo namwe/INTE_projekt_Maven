@@ -16,6 +16,8 @@ public abstract class Monster {
    
     }
     
+    abstract public void hurtMonster();
+    
     public int getStrength() {
     	return strength; 
     }

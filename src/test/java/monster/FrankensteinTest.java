@@ -28,6 +28,13 @@ class FrankensteinTest {
 		assertSame(f1, f2);	
 	}
 	
+	@Test
+	void FrankensteinGetInstanceReturnsNotNullInstanceTest() {
+		Frankenstein f1 = Frankenstein.getInstance();
+		Frankenstein f2 = Frankenstein.getInstance();
+		assertNotNull(f2);
+	}
+	
 	
 	@Test
 	void setStrengthSetsCorrectValuesTest() {
@@ -37,18 +44,18 @@ class FrankensteinTest {
 		
 	
 	@Test
-	void hurtFrankensteinDecreasesStrengthBy10Percent(){
+	void hurtMonsterDecreasesStrengthBy10Percent(){
 		Frankenstein f = Frankenstein.getInstance(); 
-		f.hurtFrankenstein();
+		f.hurtMonster();
 		assertEquals(54, f.getStrength());
 		
 	}
 	
 	@Test
-	void hurtFrankensteinSetsStrengthToZeroIfStrengthLessThan2Test(){
+	void hurtMonsterSetsStrengthToZeroIfStrengthLessThan2Test(){
 		Frankenstein f = Frankenstein.getInstance(); 
 		f.strength = 0;
-		f.hurtFrankenstein();
+		f.hurtMonster();
 		assertEquals(0, f.getStrength());	
 	}
 	

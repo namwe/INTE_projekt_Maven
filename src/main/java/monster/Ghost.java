@@ -8,7 +8,7 @@ public class Ghost extends Monster {
 	private final static int MAXSTRENGTH = 70; 
 	
 	public Ghost(int age) {	
-		super((age > 100) ? MAXSTRENGTH : 50, 60, 20);
+		super((age >= 5000) ? MAXSTRENGTH : 50, 60, 20);
 		this.age = age;
 		if (this.age < 0 || this.age > MAXAGE) 
 			throw new IllegalArgumentException("Age " + this.age + " not allowed "); 
@@ -16,9 +16,31 @@ public class Ghost extends Monster {
 		
 
 	
+	public int getAge() {
+    	return age;
+    }
+	
+	@Override
+	public void hurtMonster() {
+		if (this.getStrength() > 25) {
+			int currentStrength = this.getStrength();
+			int newStrength = (int) (currentStrength * 0.8);
+			    this.strength = newStrength;
+			}
+			else {
+				if (this.strength <= 25);
+				this.strength = 20;
+				//System.out.println("Spöken kan inte dö, styrkan minskar bara till 20");
+			}
+			
+		
+	}
+	
+	
 	public boolean isInvisible(){
 	return invisible;	
 	}
+	
 	
 	public void toggleVisibility(){
 		if(!invisible)
@@ -28,6 +50,8 @@ public class Ghost extends Monster {
 		}
 	}
 	
+	
+	
 	public String invisibleToString() {
 		if(invisible)
 			return "invisible";
@@ -36,13 +60,11 @@ public class Ghost extends Monster {
 			}
 	}
 	
-	
+	@Override
 	public String toString() {
-		return super.toString() + " " + invisibleToString(); 
+		return super.toString() + " " + age + " " +invisibleToString(); 
 		
 	}
-
-
 	
 
 }

@@ -18,7 +18,8 @@ public class Frankenstein extends Monster {
 	}
 	
 	
-	public void hurtFrankenstein() { 
+	@Override
+	public void hurtMonster() { 
 		if (this.getStrength() > 1) {
 		int currentStrength = this.getStrength();
 		int newStrength = (int) (currentStrength * 0.9);
