@@ -1,8 +1,11 @@
 package monster;
 
+
 public class Ghost extends Monster {
-	
-	private boolean invisible;
+	//ok att sätta boolean till protected 
+	//för få åtkomst för att kunna sätta 
+	//båda state (true/false) test?
+	protected boolean invisible; 
 	private int age;
 	private final static int MAXAGE = 10000; 
 	private final static int MAXSTRENGTH = 70; 
@@ -42,12 +45,8 @@ public class Ghost extends Monster {
 	}
 	
 	
-	public void toggleVisibility(){
-		if(!invisible)
-			invisible = true;
-		else {
-			invisible = false;
-		}
+	public void toggleVisibility(){  
+		invisible = !invisible;
 	}
 	
 	

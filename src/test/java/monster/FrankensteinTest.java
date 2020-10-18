@@ -56,7 +56,7 @@ class FrankensteinTest {
 		Frankenstein f = Frankenstein.getInstance(); 
 		f.strength = 0;
 		f.hurtMonster();
-		assertEquals(0, f.getStrength());	
+		assertEquals(0, f.getStrength());
 	}
 	
 	
