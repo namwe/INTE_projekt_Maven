@@ -40,7 +40,13 @@ class PlayerTest {
         });
     }
 
-    @Test void Player_dismantles_equipment() {
+    @Test
+    public void MaybeThrowAnIAEIfPlayerEquipsEquipmentThatIsAlreadyEquipped() {
+
+    }
+
+    @Test
+    void Player_dismantles_equipment() {
         Player p1 = new Player("Gladiator");
         Equipment e1 = new Armor(new StatEquipment(2,2));
         p1.addToInventory(e1);
@@ -57,7 +63,8 @@ class PlayerTest {
         assertEquals(p1.getSpeed(), 2);
     }
 
-    @Test void Throw_ISE_When_Speed_Is_Increased_To_Higher_Than_Ten() {
+    @Test
+    void Throw_ISE_When_Speed_Is_Increased_To_Higher_Than_Ten() {
         Player p1 = new Player("Gladiator");
         for (int i = 0; i < 9; i++) {
             p1.increaseSpeed();

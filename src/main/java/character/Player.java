@@ -53,7 +53,6 @@ public class Player {
         Equipment equipment = getSpecificEquipment(eq);
 
 
-
         if (equipment.isEquipped()) {
             //kasta undantag elr nåt. men svärd kan man ha två stycken equippade
             throw new IllegalArgumentException();
