@@ -48,7 +48,7 @@ class PlayerTest {
         p1.addToInventory(equipment);
         p1.addToInventory(equipment1);
         p1.putOn(equipment);
-        assertThrows(IllegalStateException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             p1.putOn(equipment1);
         });
     }

@@ -50,14 +50,11 @@ public class Player {
     }
 
     private void checkBooleanOnEquipments(Equipment equipment) {
-        String chooser = "";
-        if (equipment instanceof Armor) {
-            chooser = "armor";
-        } else if (equipment instanceof Scroll) {
-            chooser = "scroll";
-        } else if (equipment instanceof Sword) {
-            chooser = "sword";
+        if (equipments.size() <= 1) {
+            return;
         }
+
+        String chooser = getChooserString(equipment);
 
         int count = 0;
         for (Equipment loopEq : equipments) {
@@ -80,21 +77,31 @@ public class Player {
             }
         }
 
-        if (!chooser.equals("sword")) {
-            if (count > 1) {
-                throw new IllegalStateException();
-            }
-        } else {
+
+        if (chooser.equals("sword")) {
             if (count > 2) {
                 throw new IllegalStateException();
             }
+        } else {
+            if (count > 1) {
+                throw new IllegalArgumentException();
+            }
         }
 
 
-        if (equipments.size() <= 1) {
-            return;
-        }
 
+    }
+
+    private String getChooserString(Equipment equipment) {
+        String chooser = "";
+        if (equipment instanceof Armor) {
+            chooser = "armor";
+        } else if (equipment instanceof Scroll) {
+            chooser = "scroll";
+        } else if (equipment instanceof Sword) {
+            chooser = "sword";
+        }
+        return chooser;
     }
 
     public void putOn(Equipment eq) {
@@ -102,12 +109,7 @@ public class Player {
         checkBooleanOnEquipments(eq);
 
 
-        if (equipment.isEquipped()) {
-            //kasta undantag elr nåt. men svärd kan man ha två stycken equippade
-            throw new IllegalArgumentException();
-        } else {
-            equipment.setEquipped(true);
-        }
+        equipment.setEquipped(true);
     }
 
 }
