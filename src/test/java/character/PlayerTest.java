@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class PlayerTest {
+    //** ISE = IllegalStateException
+    //** IAE = IllegalArgumentException
 
     @Test
     public void Player_Has_Default_Values_On_Sword_When_Spawned() {
@@ -43,6 +45,16 @@ class PlayerTest {
         Player p1 = new Player("Gladiator");
         p1.increaseSpeed();
         assertEquals(p1.getSpeed(), 2);
+    }
+
+    @Test void Throw_ISE_When_Speed_Is_Increased_To_Higher_Than_Ten() {
+        Player p1 = new Player("Gladiator");
+        for (int i = 0; i < 9; i++) {
+            p1.increaseSpeed();
+        }
+        assertThrows(IllegalStateException.class, () -> {
+            p1.increaseSpeed();
+        });
     }
 
 
