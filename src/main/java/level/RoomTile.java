@@ -1,8 +1,8 @@
 package level;
 
 public class RoomTile {
-    private char charRepresentation;
-    private boolean solid;
+    private final char charRepresentation;
+    private final boolean solid;
 
     public RoomTile(char charRepresentation, boolean solid) {
         this.charRepresentation = charRepresentation;
