@@ -12,7 +12,7 @@ class MapTest {
     }
 
     private Room[][] defaultRoomsOracle(){
-        Room[][] rooms = new Room[3][3];
+        Room[][] rooms = new Room[Map.HEIGHT][Map.WIDTH];
         for (int i = 0; i < rooms.length; i++) {
             for (int j = 0; j < rooms[0].length; j++) {
                 rooms[i][j] = new Room(RoomType.DEFAULT_ROOM);
