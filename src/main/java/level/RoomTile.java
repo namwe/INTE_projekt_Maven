@@ -24,17 +24,4 @@ public class RoomTile {
         return Character.toString(charRepresentation);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RoomTile roomTile = (RoomTile) o;
-        return charRepresentation == roomTile.charRepresentation &&
-                solid == roomTile.solid;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(charRepresentation, solid);
-    }
 }

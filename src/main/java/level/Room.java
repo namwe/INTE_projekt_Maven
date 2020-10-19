@@ -13,6 +13,16 @@ public class Room {
         this.layout = layout;
     }
 
+    public Room(RoomType type) {
+        switch (type){
+            case DEFAULT_ROOM:
+                layout = Room.generateRoomWithWalls();
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
+
     private boolean dimentionsAreOk(RoomTile[][] layout) {
         if (layout.length != HEIGHT) {
             return false;
@@ -30,17 +40,17 @@ public class Room {
         RoomTile[][] newLayout = new RoomTile[HEIGHT][WIDTH];
 
         for (int i = 0; i < WIDTH; i++) {
-            newLayout[0][i] = new Wall();
+            newLayout[0][i] = Wall.getInstance();
         }
         for (int i = 1; i < HEIGHT - 1; i++) {
-            newLayout[i][0] = new Wall();
+            newLayout[i][0] = Wall.getInstance();
             for (int j = 1; j < WIDTH - 1; j++) {
-                newLayout[i][j] = new Air();
+                newLayout[i][j] = Air.getInstance();
             }
-            newLayout[i][WIDTH - 1] = new Wall();
+            newLayout[i][WIDTH - 1] = Wall.getInstance();
         }
         for (int i = 0; i < WIDTH; i++) {
-            newLayout[HEIGHT - 1][i] = new Wall();
+            newLayout[HEIGHT - 1][i] = Wall.getInstance();
         }
 
         return newLayout;
@@ -61,5 +71,9 @@ public class Room {
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+    public void replaceTile(int row, int colomn, RoomTile tile) {
+        layout[row][colomn] = tile;
     }
 }
