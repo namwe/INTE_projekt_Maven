@@ -20,6 +20,10 @@ public class Player {
 
     }
 
+    public int getSizeOfEquipments() {
+        return equipments.size();
+    }
+
     public void addToInventory(Equipment equipment) {
         equipments.add(equipment);
     }

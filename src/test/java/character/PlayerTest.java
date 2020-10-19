@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 class PlayerTest {
 
     @Test
-    public void Player_has_default_values_on_sword_when_spawned() {
+    public void Player_Has_Default_Values_On_Sword_When_Spawned() {
         Player p1 = new Player("Gladiator");
         Equipment defComp = new Sword(new StatEquipment(10, 0));
         assertEquals(p1.getSpecificEquipment(defComp).getStats().getCondition(), defComp.getStats().getCondition());
@@ -14,18 +14,14 @@ class PlayerTest {
     }
 
     @Test
-    public void Player_can_never_spawn_without_default_values_on_sword() {
+    public void Player_Can_Never_Spawn_Without_An_Equipment() {
         Player p1 = new Player("Gladiator");
-        Equipment eq1 = new Sword(new StatEquipment(3,5));
-        assertThrows(IllegalArgumentException.class, () -> {
-
-        });
+        assertNotEquals(0, p1.getSizeOfEquipments());
     }
 
 
-
     @Test
-    public void Player_puts_on_equipment_with_no_equipment_of_same_type_already_equipped() {
+    public void Player_Puts_On_Equipment_With_No_Equipment_Of_Same_Type_Already_Equipped() {
         Player player = new Player("Gladiator");
         Equipment eq = new Armor(new StatEquipment(3,10));
         player.addToInventory(eq);
