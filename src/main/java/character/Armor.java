@@ -1,9 +1,9 @@
-package NoNameYet;
+package character;
 
-public class Scroll extends Equipment {
+public class Armor extends Equipment {
 
 
-    public Scroll(StatEquipment stats) {
+    public Armor(StatEquipment stats) {
         super(stats);
     }
 

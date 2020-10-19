@@ -1,4 +1,4 @@
-package NoNameYet;
+package character;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,11 @@ public class Player {
         throw new IllegalArgumentException();
     }
 
-    public void putOn(Equipment equipment) {
+    public void putOn(Equipment eq) {
+        Equipment equipment = getSpecificEquipment(eq);
+
+
+
         if (equipment.isEquipped()) {
             //kasta undantag elr nåt. men svärd kan man ha två stycken equippade
             throw new IllegalArgumentException();
