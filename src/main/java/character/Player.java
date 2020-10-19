@@ -49,8 +49,16 @@ public class Player {
         throw new IllegalArgumentException();
     }
 
+    private void checkBooleanOnEquipments(Equipment equipment) {
+        if (equipments.size() <= 1) {
+            return;
+        }
+
+    }
+
     public void putOn(Equipment eq) {
         Equipment equipment = getSpecificEquipment(eq);
+        checkBooleanOnEquipments(eq);
 
 
         if (equipment.isEquipped()) {
