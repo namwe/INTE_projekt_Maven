@@ -1,22 +1,15 @@
 package level;
 
-import java.util.HashMap;
 
 public class Map {
+    public static final int WIDTH = 2, HEIGHT = 2;
+    private Room[][] rooms;
 
-    private java.util.Map<RoomType, RoomTile[][]> roomTemplates = new HashMap<>();
-
-    private RoomTile[][] getRoomTemplate(RoomType type){
-        if (roomTemplates.isEmpty()) {
-            generateRoomTemplates();
-        }
-        return roomTemplates.get(type);
+    public Map(Room[][] rooms) {
+        this.rooms = rooms;
     }
 
-    private void generateRoomTemplates() {
-        roomTemplates.put(RoomType.DEFAULT_ROOM, Room.generateRoomWithWalls());
+    public Room[][] getRooms() {
+        return rooms;
     }
-
-
-
 }
