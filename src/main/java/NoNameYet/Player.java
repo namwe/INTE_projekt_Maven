@@ -20,8 +20,13 @@ public class Player {
 
     }
 
-    public Equipment getEquipment() {
-        return null;
+    public Equipment getSpecificEquipment(Equipment eq) {
+        for (Equipment equipment : equipments) {
+            if (eq.getStats().getCondition() == equipment.getStats().getCondition() && eq.getStats().getMana() == equipment.getStats().getMana()) {
+                return equipment;
+            }
+        }
+        throw new IllegalArgumentException();
     }
 
     public void putOn(Equipment equipment) {
