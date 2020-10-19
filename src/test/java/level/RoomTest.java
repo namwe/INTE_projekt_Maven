@@ -24,7 +24,7 @@ class RoomTest {
 
         RoomTile[] airRow = wallRow.clone();
         for (int i = 1; i < airRow.length-1; i++) {
-            airRow[i] = Wall.getInstance();
+            airRow[i] = Air.getInstance();
         }
 
         for (int i = 1; i < roomWithWalls.length-1; i++) {
