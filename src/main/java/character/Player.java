@@ -27,6 +27,10 @@ public class Player {
         }
     }
 
+    public int getSpeed() {
+        return speed;
+    }
+
     public int getSizeOfInventory() {
         return equipments.size();
     }
