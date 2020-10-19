@@ -41,6 +41,8 @@ class PlayerTest {
     @Test
     public void Player_Increases_Speed_From_One_To_Two() {
         Player p1 = new Player("Gladiator");
+        p1.increaseSpeed();
+        assertEquals(p1.getSpeed(), 2);
     }
 
 
