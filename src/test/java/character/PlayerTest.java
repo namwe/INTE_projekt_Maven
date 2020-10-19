@@ -32,7 +32,7 @@ class PlayerTest {
     }
 
     @Test
-    public void Player_tries_to_put_on_equipment_that_has_not_been_added_to_inventory() {
+    public void Throw_IAE_When_Player_tries_to_put_on_equipment_that_has_not_been_added_to_inventory() {
         Player player = new Player("Gladiator");
         Equipment equipment = new Sword(new StatEquipment(10,5));
         assertThrows(IllegalArgumentException.class, () -> {
