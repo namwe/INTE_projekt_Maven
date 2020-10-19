@@ -16,7 +16,7 @@ class PlayerTest {
     @Test
     public void Player_Can_Never_Spawn_Without_An_Equipment() {
         Player p1 = new Player("Gladiator");
-        assertNotEquals(0, p1.getSizeOfEquipments());
+        assertNotEquals(0, p1.getSizeOfInventory());
     }
 
 
@@ -36,6 +36,11 @@ class PlayerTest {
         assertThrows(IllegalArgumentException.class, () -> {
            player.putOn(equipment);
         });
+    }
+
+    @Test
+    public void Player_Increases_Speed_From_One_To_Two() {
+        Player p1 = new Player("Gladiator");
     }
 
 
