@@ -74,5 +74,6 @@ public class Room {
     }
 
     public void replaceTile(int row, int colomn, RoomTile tile) {
+        layout[row][colomn] = tile;
     }
 }
