@@ -6,9 +6,9 @@ import java.util.Map;
 
 public class Room {
 
-    private static final int WIDTH = 9, HEIGHT = 9;
+    public static final int WIDTH = 9, HEIGHT = 9;
     private RoomTile[][] layout;
-    private Map<RoomType, RoomTile[][]> roomTemplates = new HashMap<>();
+
 
     public Room(RoomTile[][] layout) {
         if (!dimentionsAreOk(layout)) {
@@ -17,35 +17,7 @@ public class Room {
         this.layout = layout;
     }
 
-    public Room(RoomType roomType) {
-        generateRoomTemplates();
-        this.layout = roomTemplates.get(roomType);
-    }
 
-    //Will be moved
-    private void generateRoomTemplates() {
-        roomTemplates.put(RoomType.DEFAULT_ROOM, roomWithWalls());
-    }
-
-    private RoomTile[][] roomWithWalls() {
-        RoomTile[][] newLayout = new RoomTile[HEIGHT][WIDTH];
-
-        for (int i = 0; i < WIDTH; i++) {
-            newLayout[0][i] = new Wall();
-        }
-        for (int i = 1; i < HEIGHT - 1; i++) {
-            newLayout[i][0] = new Wall();
-            for (int j = 1; j < WIDTH - 1; j++) {
-                newLayout[i][j] = new Air();
-            }
-            newLayout[i][WIDTH - 1] = new Wall();
-        }
-        for (int i = 0; i < WIDTH; i++) {
-            newLayout[HEIGHT - 1][i] = new Wall();
-        }
-
-        return newLayout;
-    }
 
     private boolean dimentionsAreOk(RoomTile[][] layout) {
         if (layout.length != HEIGHT) {
