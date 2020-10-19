@@ -50,6 +50,47 @@ public class Player {
     }
 
     private void checkBooleanOnEquipments(Equipment equipment) {
+        String chooser = "";
+        if (equipment instanceof Armor) {
+            chooser = "armor";
+        } else if (equipment instanceof Scroll) {
+            chooser = "scroll";
+        } else if (equipment instanceof Sword) {
+            chooser = "sword";
+        }
+
+        int count = 0;
+        for (Equipment loopEq : equipments) {
+            switch (chooser) {
+                case "armor":
+                    if (loopEq instanceof Armor) {
+                        count++;
+                    }
+                    break;
+                case "scroll":
+                    if (loopEq instanceof Scroll) {
+                        count++;
+                    }
+                    break;
+                case "sword":
+                    if (loopEq instanceof Sword) {
+                        count++;
+                    }
+                    break;
+            }
+        }
+
+        if (!chooser.equals("sword")) {
+            if (count > 1) {
+                throw new IllegalStateException();
+            }
+        } else {
+            if (count > 2) {
+                throw new IllegalStateException();
+            }
+        }
+
+
         if (equipments.size() <= 1) {
             return;
         }
