@@ -20,14 +20,23 @@ class PlayerTest {
         assertNotEquals(p1.getEquipment().getStats().getCondition(), eq1.getStats().getCondition());
     }
 
+     */
+
     @Test
     public void Player_puts_on_equipment_with_no_equipment_of_same_type_already_equipped() {
         Player player = new Player("Gladiator");
         Equipment eq = new Armor(new StatEquipment(3,10));
+        player.addToInventory(eq);
         player.putOn(eq);
-        assertEquals(true, player.getEquipment().isEquipped());
+        assertEquals(true, player.getSpecificEquipment(eq).isEquipped());
     }
 
-     */
+    @Test
+    public void Player_tries_to_equip_equipment_that_has_not_been_added_to_inventory() {
+        Player player = new Player("Gladiator");
+        Equipment equipment = new Scroll(new StatEquipment())
+    }
+
+
 
 }

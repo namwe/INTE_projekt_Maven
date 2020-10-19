@@ -20,6 +20,10 @@ public class Player {
 
     }
 
+    public void addToInventory(Equipment equipment) {
+        equipments.add(equipment);
+    }
+
     public Equipment getSpecificEquipment(Equipment eq) {
         for (Equipment equipment : equipments) {
             if (eq.getStats().getCondition() == equipment.getStats().getCondition() && eq.getStats().getMana() == equipment.getStats().getMana()) {
