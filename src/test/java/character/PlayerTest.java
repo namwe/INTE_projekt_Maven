@@ -41,14 +41,14 @@ class PlayerTest {
     }
 
     @Test
-    public void MaybeThrowAnIAEIfPlayerEquipsEquipmentThatIsAlreadyEquipped() {
+    public void Throw_ISE_When_Equipping_Two_Of_Same_Kind_Of_Equipment() {
         Player p1 = new Player("Gladiator");
         Equipment equipment = new Armor(new StatEquipment(4,7));
         Equipment equipment1 = new Armor(new StatEquipment(1,6));
         p1.addToInventory(equipment);
         p1.addToInventory(equipment1);
         p1.putOn(equipment);
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalStateException.class, () -> {
             p1.putOn(equipment1);
         });
     }

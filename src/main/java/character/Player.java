@@ -84,7 +84,7 @@ public class Player {
             }
         } else {
             if (count > 1) {
-                throw new IllegalArgumentException();
+                throw new IllegalStateException();
             }
         }
 
