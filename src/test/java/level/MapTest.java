@@ -8,7 +8,7 @@ class MapTest {
     void constructorSetsRooms(){
         Room[][] rooms = defaultRoomsOracle();
         Map m = new Map(rooms);
-        assertEquals(rooms, m.getRooms);
+        assertEquals(rooms, m.getRooms());
     }
 
     private Room[][] defaultRoomsOracle(){
