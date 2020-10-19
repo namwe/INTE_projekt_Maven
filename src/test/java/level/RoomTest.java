@@ -16,7 +16,7 @@ class RoomTest {
 
         RoomTile[] wallRow = new RoomTile[9];
         for (int i = 0; i < wallRow.length; i++) {
-            wallRow[i] = new Wall();
+            wallRow[i] = Wall.getInstance();
         }
 
         assertArrayEquals(wallRow, roomWithWalls[0]);
@@ -24,7 +24,7 @@ class RoomTest {
 
         RoomTile[] airRow = wallRow.clone();
         for (int i = 1; i < airRow.length-1; i++) {
-            airRow[i] = new Air();
+            airRow[i] = Wall.getInstance();
         }
 
         for (int i = 1; i < roomWithWalls.length-1; i++) {
