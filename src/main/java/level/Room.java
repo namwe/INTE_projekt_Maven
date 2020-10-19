@@ -13,6 +13,16 @@ public class Room {
         this.layout = layout;
     }
 
+    public Room(RoomType type) {
+        switch (type){
+            case DEFAULT_ROOM:
+                layout = Room.generateRoomWithWalls();
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
+
     private boolean dimentionsAreOk(RoomTile[][] layout) {
         if (layout.length != HEIGHT) {
             return false;
