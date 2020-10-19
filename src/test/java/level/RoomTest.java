@@ -17,7 +17,7 @@ class RoomTest {
     void arrayConstructorThrowsIAE(int x, int y){
         RoomTile[][] roomTiles = new RoomTile[x][y];
         assertThrows(IllegalArgumentException.class, () -> {
-            Room r = new Room(roomTiles);
+            new Room(roomTiles);
         });
     }
 
@@ -30,8 +30,20 @@ class RoomTest {
     @Test
     void enumConstructorThrowsIAE(){
         assertThrows(IllegalArgumentException.class, () -> {
-            Room r = new Room(RoomType.NON_DEFINED);
+            new Room(RoomType.NON_DEFINED);
         });
+    }
+
+    @Test
+    void replaceTile(){
+        Room r = new Room(RoomType.DEFAULT_ROOM);
+
+        RoomTile tile = new RoomTile('T', false);
+        r.replaceTile(0, 4, tile);
+
+        RoomTile actual = r.getLayout()[0][4];
+
+        assertEquals(tile, actual);
     }
 
     @Test
