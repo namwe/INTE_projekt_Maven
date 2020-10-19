@@ -46,6 +46,10 @@ public class Room {
         return newLayout;
     }
 
+    public RoomTile[][] getLayout() {
+        return layout;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
