@@ -21,7 +21,7 @@ public class Player {
     }
 
     public Equipment getEquipment() {
-
+        return null;
     }
 
     public void putOn(Equipment equipment) {
