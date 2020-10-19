@@ -16,7 +16,8 @@ public class Player {
     }
 
     public void dismantle(Equipment equipment) {
-
+        Equipment checkedEq = getSpecificEquipment(equipment);
+        checkedEq.setEquipped(false);
     }
 
     public void increaseSpeed() {

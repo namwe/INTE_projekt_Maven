@@ -40,6 +40,16 @@ class PlayerTest {
         });
     }
 
+    @Test void Player_dismantles_equipment() {
+        Player p1 = new Player("Gladiator");
+        Equipment e1 = new Armor(new StatEquipment(2,2));
+        p1.addToInventory(e1);
+        p1.putOn(e1);
+        p1.dismantle(e1);
+        assertEquals(false, p1.getSpecificEquipment(e1).isEquipped());
+
+    }
+
     @Test
     public void Player_Increases_Speed_From_One_To_Two() {
         Player p1 = new Player("Gladiator");
@@ -56,6 +66,7 @@ class PlayerTest {
             p1.increaseSpeed();
         });
     }
+
 
 
 
