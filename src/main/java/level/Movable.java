@@ -1,6 +1,10 @@
 package level;
 
-public interface Movable {
-    public char getRepresentation();
+public abstract class Movable extends RoomTile{
+    private RoomTile originalTile;
+    private int[][] roomPosition;
 
+    public Movable(char charRepresentation) {
+        super(charRepresentation, true);
+    }
 }
