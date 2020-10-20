@@ -1,5 +1,5 @@
 package level;
 
 public enum RoomType {
-    DEFAULT_ROOM
+    DEFAULT_ROOM, NON_DEFINED
 }

@@ -1,4 +1,4 @@
-package NoNameYet;
+package character;
 
 public interface Attackable {
     public void damage();
