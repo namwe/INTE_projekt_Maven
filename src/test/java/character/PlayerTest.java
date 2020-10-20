@@ -3,6 +3,8 @@ package character;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 class PlayerTest {
     //** ISE = IllegalStateException
     //** IAE = IllegalArgumentException
@@ -16,9 +18,30 @@ class PlayerTest {
     }
 
     @Test
+    public void Player_Equips_Default_Sword_In_Inventory() {
+        Player p1 = new Player("Gladiator");
+        List<Equipment> equipments = p1.getEquipments();
+        p1.putOn(equipments.get(0));
+        assertTrue(equipments.get(0).isEquipped());
+    }
+
+    @Test
     public void Player_Can_Never_Spawn_Without_An_Equipment() {
         Player p1 = new Player("Gladiator");
         assertNotEquals(0, p1.getSizeOfInventory());
+    }
+
+    @Test
+    public void Throw_ISE_When_Player_Equips_Two_Equipment_Of_Type_Scroll() {
+        Player p1 = new Player("Gladiator");
+        Equipment scroll = new Scroll(new StatEquipment(10,3));
+        Equipment scroll2 = new Scroll(new StatEquipment(10,6));
+        p1.addToInventory(scroll);
+        p1.addToInventory(scroll2);
+        p1.putOn(scroll);
+        assertThrows(IllegalStateException.class, () -> {
+            p1.putOn(scroll2);
+        });
     }
 
     @Test
@@ -36,11 +59,11 @@ class PlayerTest {
         Equipment eq = new Armor(new StatEquipment(3,10));
         player.addToInventory(eq);
         player.putOn(eq);
-        assertEquals(true, player.getSpecificEquipment(eq).isEquipped());
+        assertTrue(player.getSpecificEquipment(eq).isEquipped());
     }
 
     @Test
-    public void Throw_IAE_When_Player_tries_to_put_on_equipment_that_has_not_been_added_to_inventory() {
+    public void Throw_IAE_When_Player_Tries_To_Put_On_Equipment_That_Has_Not_Been_Added_To_Inventory() {
         Player player = new Player("Gladiator");
         Equipment equipment = new Sword(new StatEquipment(10,5));
         assertThrows(IllegalArgumentException.class, () -> {
@@ -74,6 +97,22 @@ class PlayerTest {
     }
 
     @Test
+    public void Throw_ISE_When_Equipping_Swords_More_Than_Two() {
+        Player p1 = new Player("Gladiator");
+        Equipment sword = new Sword(new StatEquipment(2,5));
+        Equipment sword2 = new Sword(new StatEquipment(4,8));
+        Equipment sword3 = new Sword(new StatEquipment(2,4));
+        p1.addToInventory(sword);
+        p1.addToInventory(sword2);
+        p1.addToInventory(sword3);
+        p1.putOn(sword);
+        p1.putOn(sword2);
+        assertThrows(IllegalStateException.class, () -> {
+            p1.putOn(sword3);
+        });
+    }
+
+    @Test
     public void When_Player_Dismantles_Equipments_They_Are_No_Longer_Equipped() {
         Player p1 = new Player("Gladiator");
         Equipment sword = new Sword(new StatEquipment(2,5));
@@ -84,8 +123,8 @@ class PlayerTest {
         p1.putOn(scroll);
         p1.dismantle(sword);
         p1.dismantle(scroll);
-        assertEquals(false, sword.isEquipped());
-        assertEquals(false, scroll.isEquipped());
+        assertFalse(sword.isEquipped());
+        assertFalse(scroll.isEquipped());
     }
 
     @Test
@@ -95,7 +134,7 @@ class PlayerTest {
         p1.addToInventory(e1);
         p1.putOn(e1);
         p1.dismantle(e1);
-        assertEquals(false, p1.getSpecificEquipment(e1).isEquipped());
+        assertFalse(p1.getSpecificEquipment(e1).isEquipped());
 
     }
 
