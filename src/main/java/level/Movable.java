@@ -6,4 +6,8 @@ public abstract class Movable{
     public Movable(Position position) {
         this.position = position;
     }
+
+    public Position getPosition() {
+        return position;
+    }
 }
