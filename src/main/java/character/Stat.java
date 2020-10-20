@@ -1,4 +1,4 @@
-package NoNameYet;
+package character;
 
 public class Stat {
     private int hp;

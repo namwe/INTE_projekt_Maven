@@ -1,8 +1,10 @@
 package level;
 
+import java.util.Objects;
+
 public class RoomTile {
-    private char charRepresentation;
-    private boolean solid;
+    private final char charRepresentation;
+    private final boolean solid;
 
     public RoomTile(char charRepresentation, boolean solid) {
         this.charRepresentation = charRepresentation;
@@ -21,4 +23,5 @@ public class RoomTile {
     public String toString() {
         return Character.toString(charRepresentation);
     }
+
 }

@@ -1,4 +1,4 @@
-package NoNameYet;
+package character;
 
 public abstract class Equipment implements Attackable {
     private boolean equipped;
