@@ -30,5 +30,16 @@ public class Map {
     }
 
     public void placeDoors() {
+        this.getRooms()[0][0].replaceTile(4, 8, Door.getInstance());
+        this.getRooms()[0][0].replaceTile(8, 4, Door.getInstance());
+
+        this.getRooms()[0][1].replaceTile(4, 0, Door.getInstance());
+        this.getRooms()[0][1].replaceTile(8, 4, Door.getInstance());
+
+        this.getRooms()[1][0].replaceTile(0, 4, Door.getInstance());
+        this.getRooms()[1][0].replaceTile(4, 8, Door.getInstance());
+
+        this.getRooms()[1][1].replaceTile(0, 4, Door.getInstance());
+        this.getRooms()[1][1].replaceTile(4, 0, Door.getInstance());
     }
 }
