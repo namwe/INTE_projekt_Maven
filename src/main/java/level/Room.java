@@ -7,7 +7,7 @@ public class Room {
 
 
     public Room(RoomTile[][] layout) {
-        if (!dimentionsAreOk(layout)) {
+        if (!dimensionsAreOk(layout)) {
             throw new IllegalArgumentException();
         }
         this.layout = layout;
@@ -23,7 +23,7 @@ public class Room {
         }
     }
 
-    private boolean dimentionsAreOk(RoomTile[][] layout) {
+    private boolean dimensionsAreOk(RoomTile[][] layout) {
         if (layout.length != HEIGHT) {
             return false;
         }

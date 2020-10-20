@@ -2,6 +2,8 @@ package level;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class MapTest {
     @Test
@@ -9,6 +11,33 @@ class MapTest {
         Room[][] rooms = defaultRoomsOracle();
         Map m = new Map(rooms);
         assertEquals(rooms, m.getRooms());
+    }
+
+    @ParameterizedTest
+    @CsvSource({"2, 3", "1, 2"})
+    void constructorThrowsIAE(int x, int y){
+        Room[][] rooms = new Room[x][y];
+        assertThrows(IllegalArgumentException.class, () -> new Map(rooms));
+    }
+
+    @Test
+    void placeDoorsTest(){
+        Room[][] rooms = defaultRoomsOracle();
+        Map m = new Map(rooms);
+        m.placeDoors();
+
+        //Multiple asserts is bad practice, but I'm not sure how to do it in another way.
+        assertEquals(Door.getInstance(), m.getRooms()[0][0].getLayout()[4][8]);
+        assertEquals(Door.getInstance(), m.getRooms()[0][0].getLayout()[8][4]);
+
+        assertEquals(Door.getInstance(), m.getRooms()[0][1].getLayout()[4][0]);
+        assertEquals(Door.getInstance(), m.getRooms()[0][1].getLayout()[8][4]);
+
+        assertEquals(Door.getInstance(), m.getRooms()[1][0].getLayout()[0][4]);
+        assertEquals(Door.getInstance(), m.getRooms()[1][0].getLayout()[4][8]);
+
+        assertEquals(Door.getInstance(), m.getRooms()[1][1].getLayout()[0][4]);
+        assertEquals(Door.getInstance(), m.getRooms()[1][1].getLayout()[4][0]);
     }
 
     private Room[][] defaultRoomsOracle(){
@@ -20,4 +49,6 @@ class MapTest {
         }
         return rooms;
     }
+
+
 }
