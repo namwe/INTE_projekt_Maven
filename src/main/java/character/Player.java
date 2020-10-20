@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Player {
     private Stat playerStats;
-    private int speed = 1;
+    private int speed;
     private String name;
     private List<Equipment> equipments = new ArrayList<>();
 
@@ -13,6 +13,7 @@ public class Player {
         this.name = name;
         equipments.add(new Sword(new StatEquipment(10,0)));
         playerStats = new Stat(100,50);
+        speed = 1;
     }
 
     public void dismantle(Equipment equipment) {
