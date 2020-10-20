@@ -73,7 +73,7 @@ public class Room {
         return sb.toString();
     }
 
-    public void replaceTile(int row, int colomn, RoomTile tile) {
-        layout[row][colomn] = tile;
+    public void replaceTile(int row, int column, RoomTile tile) {
+        layout[row][column] = tile;
     }
 }
