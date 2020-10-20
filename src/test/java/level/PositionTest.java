@@ -13,8 +13,8 @@ public class PositionTest {
         Position p = new Position(roomRow, roomColumn, tileRow, tileColumn);
 
         assertEquals(roomRow, p.getRoomRow());
-        assertEquals(roomRow, p.getRoomColumn());
-        assertEquals(roomRow, p.getTileRow());
-        assertEquals(roomRow, p.getTileColumn());
+        assertEquals(roomColumn, p.getRoomColumn());
+        assertEquals(tileRow, p.getTileRow());
+        assertEquals(tileColumn, p.getTileColumn());
     }
 }
