@@ -28,4 +28,7 @@ public class Map {
     public Room[][] getRooms() {
         return rooms;
     }
+
+    public void placeDoors() {
+    }
 }
