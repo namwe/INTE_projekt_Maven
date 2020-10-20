@@ -22,7 +22,7 @@ class PlayerTest {
         Player p1 = new Player("Gladiator");
         List<Equipment> equipments = p1.getEquipments();
         p1.putOn(equipments.get(0));
-        assertEquals(true, equipments.get(0).isEquipped());
+        assertTrue(equipments.get(0).isEquipped());
     }
 
     @Test

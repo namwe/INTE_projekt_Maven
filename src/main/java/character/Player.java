@@ -20,6 +20,12 @@ public class Player {
         checkedEq.setEquipped(false);
     }
 
+    public List<Equipment> getEquipments() {
+        List<Equipment> copy = new ArrayList<>();
+        copy.addAll(equipments);
+        return copy;
+    }
+
     public void increaseSpeed() {
         if (speed == 10) {
             throw new IllegalStateException();
