@@ -25,10 +25,13 @@ class PlayerTest {
     public void Throw_ISE_When_Player_Equips_Two_Equipment_Of_Type_Scroll() {
         Player p1 = new Player("Gladiator");
         Equipment scroll = new Scroll(new StatEquipment(10,3));
+        Equipment scroll2 = new Scroll(new StatEquipment(10,6));
         p1.addToInventory(scroll);
         p1.addToInventory(scroll2);
         p1.putOn(scroll);
-        p1.putOn(scroll2);
+        assertThrows(IllegalStateException.class, () -> {
+            p1.putOn(scroll2);
+        });
     }
 
     @Test
