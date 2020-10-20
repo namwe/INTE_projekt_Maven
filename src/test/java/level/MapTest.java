@@ -11,6 +11,12 @@ class MapTest {
         assertEquals(rooms, m.getRooms());
     }
 
+    @Test
+    void constructorThrowsIAE(){
+        Room[][] rooms = new Room[2][3];
+        assertThrows(IllegalArgumentException.class, () -> new Map(rooms));
+    }
+
     private Room[][] defaultRoomsOracle(){
         Room[][] rooms = new Room[Map.HEIGHT][Map.WIDTH];
         for (int i = 0; i < rooms.length; i++) {
@@ -20,4 +26,6 @@ class MapTest {
         }
         return rooms;
     }
+
+
 }
