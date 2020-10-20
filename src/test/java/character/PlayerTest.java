@@ -59,7 +59,7 @@ class PlayerTest {
         Equipment eq = new Armor(new StatEquipment(3,10));
         player.addToInventory(eq);
         player.putOn(eq);
-        assertEquals(true, player.getSpecificEquipment(eq).isEquipped());
+        assertTrue(player.getSpecificEquipment(eq).isEquipped());
     }
 
     @Test
@@ -123,8 +123,8 @@ class PlayerTest {
         p1.putOn(scroll);
         p1.dismantle(sword);
         p1.dismantle(scroll);
-        assertEquals(false, sword.isEquipped());
-        assertEquals(false, scroll.isEquipped());
+        assertFalse(sword.isEquipped());
+        assertFalse(scroll.isEquipped());
     }
 
     @Test
@@ -134,7 +134,7 @@ class PlayerTest {
         p1.addToInventory(e1);
         p1.putOn(e1);
         p1.dismantle(e1);
-        assertEquals(false, p1.getSpecificEquipment(e1).isEquipped());
+        assertFalse(p1.getSpecificEquipment(e1).isEquipped());
 
     }
 
