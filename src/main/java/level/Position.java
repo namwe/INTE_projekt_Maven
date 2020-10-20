@@ -25,5 +25,43 @@ public class Position {
     public int getTileColumn() {
         return tileColumn;
     }
+
+    public void setRoomRow(int roomRow) {
+        this.roomRow = roomRow;
+    }
+
+    public void setRoomColumn(int roomColumn) {
+        this.roomColumn = roomColumn;
+    }
+
+    public void setTileRow(int tileRow) {
+        this.tileRow = tileRow;
+    }
+
+    public void setTileColumn(int tileColumn) {
+        this.tileColumn = tileColumn;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Position position = (Position) o;
+
+        if (roomRow != position.roomRow) return false;
+        if (roomColumn != position.roomColumn) return false;
+        if (tileRow != position.tileRow) return false;
+        return tileColumn == position.tileColumn;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = roomRow;
+        result = 31 * result + roomColumn;
+        result = 31 * result + tileRow;
+        result = 31 * result + tileColumn;
+        return result;
+    }
 }
 
