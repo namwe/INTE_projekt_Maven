@@ -2,6 +2,8 @@ package level;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class MapTest {
     @Test
@@ -11,9 +13,10 @@ class MapTest {
         assertEquals(rooms, m.getRooms());
     }
 
-    @Test
-    void constructorThrowsIAE(){
-        Room[][] rooms = new Room[2][3];
+    @ParameterizedTest
+    @CsvSource({"2, 3", "1, 2"})
+    void constructorThrowsIAE(int x, int y){
+        Room[][] rooms = new Room[x][y];
         assertThrows(IllegalArgumentException.class, () -> new Map(rooms));
     }
 
