@@ -49,7 +49,7 @@ class PlayerTest {
     }
 
     @Test
-    public void Throw_ISE_When_Equipping_Two_Of_Same_Kind_Of_Equipment() {
+    public void Throw_ISE_When_Equipping_Two_Of_Same_Kind_Of_Equipment_That_Is_Not_Type_Sword() {
         Player p1 = new Player("Gladiator");
         Equipment equipment = new Armor(new StatEquipment(4,7));
         Equipment equipment1 = new Armor(new StatEquipment(1,6));
@@ -63,7 +63,33 @@ class PlayerTest {
     }
 
     @Test
-    void Player_dismantles_equipment() {
+    public void Player_Equips_Two_Swords() {
+        Player p1 = new Player("Gladiator");
+        Equipment sword = new Sword(new StatEquipment(2,5));
+        Equipment sword2 = new Sword(new StatEquipment(4,8));
+        p1.addToInventory(sword);
+        p1.addToInventory(sword2);
+        p1.putOn(sword);
+        p1.putOn(sword2);
+    }
+
+    @Test
+    public void When_Player_Dismantles_Equipments_They_Are_No_Longer_Equipped() {
+        Player p1 = new Player("Gladiator");
+        Equipment sword = new Sword(new StatEquipment(2,5));
+        Equipment scroll = new Scroll(new StatEquipment(10,8));
+        p1.addToInventory(sword);
+        p1.addToInventory(scroll);
+        p1.putOn(sword);
+        p1.putOn(scroll);
+        p1.dismantle(sword);
+        p1.dismantle(scroll);
+        assertEquals(false, sword.isEquipped());
+        assertEquals(false, scroll.isEquipped());
+    }
+
+    @Test
+    void Player_Dismantles_Equipment() {
         Player p1 = new Player("Gladiator");
         Equipment e1 = new Armor(new StatEquipment(2,2));
         p1.addToInventory(e1);
