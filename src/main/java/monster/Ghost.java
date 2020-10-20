@@ -1,18 +1,21 @@
 package monster;
 
+import java.util.Calendar;
 
 public class Ghost extends Monster {
 	//ok att sätta boolean till protected 
 	//för få åtkomst för att kunna sätta 
 	//båda state (true/false) test?
-	protected boolean invisible; 
+	protected boolean invisible = true; //spöke är osynligt, synligt endast midnattstimmen
 	private int age;
 	private final static int MAXAGE = 10000; 
 	private final static int MAXSTRENGTH = 70; 
 	
-	public Ghost(int age) {	
+	public Ghost(int age, Now n) {	
 		super((age >= 5000) ? MAXSTRENGTH : 50, 60, 20);
 		this.age = age;
+		if (n.isMidnight())
+			this.invisible = false;
 		if (this.age < 0 || this.age > MAXAGE) 
 			throw new IllegalArgumentException("Age " + this.age + " not allowed "); 
 	}
@@ -44,10 +47,6 @@ public class Ghost extends Monster {
 	return invisible;	
 	}
 	
-	
-	public void toggleVisibility(){  
-		invisible = !invisible;
-	}
 	
 	
 	
