@@ -1,22 +1,29 @@
 package level;
 
 public class Position {
+    private int roomRow, roomColumn, tileRow, tileColumn;
+
     public Position(int roomRow, int roomColumn, int tileRow, int tileColumn) {
-    }
-
-    public int getTileColumn() {
-        return -1;
-    }
-
-    public int getTileRow() {
-        return -1;
-    }
-
-    public int getRoomColumn() {
-        return -1;
+        this.roomRow = roomRow;
+        this.roomColumn = roomColumn;
+        this.tileRow = tileRow;
+        this.tileColumn = tileColumn;
     }
 
     public int getRoomRow() {
-        return -1;
+        return roomRow;
+    }
+
+    public int getRoomColumn() {
+        return roomColumn;
+    }
+
+    public int getTileRow() {
+        return tileRow;
+    }
+
+    public int getTileColumn() {
+        return tileColumn;
     }
 }
+
