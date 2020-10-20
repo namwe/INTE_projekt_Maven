@@ -29,9 +29,6 @@ public class StatEquipment {
 
     @Override
     public String toString() {
-        return "StatEquipment{" +
-                "condition=" + condition +
-                ", mana=" + mana +
-                '}';
+        return "condition = " + condition + " mana = " + mana;
     }
 }

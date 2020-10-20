@@ -36,4 +36,11 @@ class StatEquipmentTest {
         assertEquals(statEquipment.getMana(), 3);
     }
 
+    @Test
+    public void toStringTest() {
+        StatEquipment statEquipment = new StatEquipment(4,7);
+        String expected = "condition = " + 4 + " mana = " + 7;
+        assertEquals(expected, statEquipment.toString());
+    }
+
 }
