@@ -56,40 +56,51 @@ public class Player {
 
         String chooser = getChooserString(equipment);
 
+        int count = getCounterForEquipments(chooser);
+
+
+        if (chooser.equals("sword")) {
+            if (count >= 2) {
+                throw new IllegalStateException();
+            }
+        } else {
+            if (count >= 1) {
+                throw new IllegalStateException();
+            }
+        }
+
+
+
+    }
+
+    private int getCounterForEquipments(String chooser) {
         int count = 0;
         for (Equipment loopEq : equipments) {
             switch (chooser) {
                 case "armor":
                     if (loopEq instanceof Armor) {
-                        count++;
+                        if (loopEq.isEquipped()) {
+                            count++;
+                        }
                     }
                     break;
                 case "scroll":
                     if (loopEq instanceof Scroll) {
-                        count++;
+                        if (loopEq.isEquipped()) {
+                            count++;
+                        }
                     }
                     break;
                 case "sword":
                     if (loopEq instanceof Sword) {
-                        count++;
+                        if (loopEq.isEquipped()) {
+                            count++;
+                        }
                     }
                     break;
             }
         }
-
-
-        if (chooser.equals("sword")) {
-            if (count > 2) {
-                throw new IllegalStateException();
-            }
-        } else {
-            if (count > 1) {
-                throw new IllegalStateException();
-            }
-        }
-
-
-
+        return count;
     }
 
     private String getChooserString(Equipment equipment) {
@@ -104,6 +115,7 @@ public class Player {
         return chooser;
     }
 
+    //*** En metod som kollar om det går att sätta på ett equipment ***//
     public void putOn(Equipment eq) {
         Equipment equipment = getSpecificEquipment(eq);
         checkBooleanOnEquipments(eq);
