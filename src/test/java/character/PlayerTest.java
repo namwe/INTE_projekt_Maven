@@ -22,11 +22,13 @@ class PlayerTest {
     }
 
     @Test
-    public void Throw_Player_Equips_One_Equipment_Of_Type_Scroll() {
+    public void Throw_ISE_When_Player_Equips_Two_Equipment_Of_Type_Scroll() {
         Player p1 = new Player("Gladiator");
         Equipment scroll = new Scroll(new StatEquipment(10,3));
         p1.addToInventory(scroll);
+        p1.addToInventory(scroll2);
         p1.putOn(scroll);
+        p1.putOn(scroll2);
     }
 
     @Test
