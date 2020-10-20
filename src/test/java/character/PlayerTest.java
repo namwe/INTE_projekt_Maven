@@ -3,6 +3,8 @@ package character;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 class PlayerTest {
     //** ISE = IllegalStateException
     //** IAE = IllegalArgumentException
@@ -13,6 +15,14 @@ class PlayerTest {
         Equipment defComp = new Sword(new StatEquipment(10, 0));
         assertEquals(p1.getSpecificEquipment(defComp).getStats().getCondition(), defComp.getStats().getCondition());
         assertEquals(p1.getSpecificEquipment(defComp).getStats().getMana(), defComp.getStats().getMana());
+    }
+
+    @Test
+    public void Player_Equips_Default_Sword_In_Inventory() {
+        Player p1 = new Player("Gladiator");
+        List<Equipment> equipments = p1.getEquipments();
+        p1.putOn(equipments.get(0));
+        assertEquals(true, equipments.get(0).isEquipped());
     }
 
     @Test
