@@ -21,6 +21,14 @@ class PlayerTest {
         assertNotEquals(0, p1.getSizeOfInventory());
     }
 
+    @Test
+    public void Adding_Two_Equipments_Results_In_Three_In_Total_In_Inventory() {
+        Player p1 = new Player("Gladiator");
+        p1.addToInventory(new Armor(new StatEquipment(4,9)));
+        p1.addToInventory(new Scroll(new StatEquipment(10,4)));
+        assertEquals(p1.getSizeOfInventory(), 3);
+    }
+
 
     @Test
     public void Player_Puts_On_Equipment_With_No_Equipment_Of_Same_Type_Already_Equipped() {
@@ -50,6 +58,7 @@ class PlayerTest {
         p1.putOn(equipment);
         assertThrows(IllegalStateException.class, () -> {
             p1.putOn(equipment1);
+
         });
     }
 

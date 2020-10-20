@@ -61,17 +61,23 @@ public class Player {
             switch (chooser) {
                 case "armor":
                     if (loopEq instanceof Armor) {
-                        count++;
+                        if (loopEq.isEquipped()) {
+                            count++;
+                        }
                     }
                     break;
                 case "scroll":
                     if (loopEq instanceof Scroll) {
-                        count++;
+                        if (loopEq.isEquipped()) {
+                            count++;
+                        }
                     }
                     break;
                 case "sword":
                     if (loopEq instanceof Sword) {
-                        count++;
+                        if (loopEq.isEquipped()) {
+                            count++;
+                        }
                     }
                     break;
             }
@@ -79,11 +85,11 @@ public class Player {
 
 
         if (chooser.equals("sword")) {
-            if (count > 2) {
+            if (count >= 2) {
                 throw new IllegalStateException();
             }
         } else {
-            if (count > 1) {
+            if (count >= 1) {
                 throw new IllegalStateException();
             }
         }

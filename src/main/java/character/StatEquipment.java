@@ -18,6 +18,14 @@ public class StatEquipment {
 
     }
 
+    @Override
+    public String toString() {
+        return "StatEquipment{" +
+                "condition=" + condition +
+                ", mana=" + mana +
+                '}';
+    }
+
     public int getCondition() {
         return condition;
     }
