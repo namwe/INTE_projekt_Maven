@@ -11,9 +11,13 @@ public class Stat {
 
     public Stat(int hp, int mana) {
         if (hp < 0 || hp > 100) {
+            throw new IllegalArgumentException();
+        } else {
             this.hp = hp;
         }
         if (mana < 0 || mana > 100) {
+            throw new IllegalArgumentException();
+        } else {
             this.mana = mana;
         }
     }
