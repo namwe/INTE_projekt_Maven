@@ -30,7 +30,7 @@ public class Map {
     }
 
     public RoomTile getTile(Position position) {
-        return rooms[position.getRoomRow()][position.getRoomColumn()].getTile(position.getTileRow(), position.getTileColumn());
+        return rooms[position.getRoomRow()][position.getRoomColumn()].getLayout()[position.getTileRow()][position.getTileColumn()];
     }
 
     public RoomTile replaceTile(Position position, RoomTile tile) {
