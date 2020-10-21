@@ -1,5 +1,8 @@
 package character;
 
+
+import monster.*;
+
 public abstract class Equipment implements Attackable {
     private boolean equipped;
     private StatEquipment stats;
@@ -8,6 +11,7 @@ public abstract class Equipment implements Attackable {
         this.equipped = false;
         this.stats = stats;
     }
+
 
     public boolean isEquipped() {
         return equipped;

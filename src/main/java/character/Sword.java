@@ -1,4 +1,5 @@
 package character;
+import monster.*;
 
 public class Sword extends Equipment {
 
@@ -9,11 +10,17 @@ public class Sword extends Equipment {
     }
 
 
-    public void damage() {
+    public void damage(Monster monster) {
+        if (monster instanceof Ghost) {
 
+        } else if (monster instanceof Frankenstein) {
+
+        } else if (monster instanceof Vampire) {
+
+        }
     }
 
-    public void durability() {
+    public void durability(Monster monster) {
 
     }
 }
