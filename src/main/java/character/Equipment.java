@@ -25,7 +25,11 @@ public abstract class Equipment {
         return stats;
     }
 
-    public void combat(Monster monster) {
-        stats.takeDmg(monster);
+    public void combat(Monster monster, Equipment equipment) {
+        if (equipment instanceof Sword) {
+            stats.takeDmg(monster);
+        } else if (equipment instanceof Scroll) {
+            stats.takeManaDmg(monster);
+        }
     }
 }

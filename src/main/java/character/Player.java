@@ -21,9 +21,6 @@ public class Player implements Attackable {
         speed = 1;
     }
 
-    public Stat getPlayerStats() {
-        return playerStats;
-    }
 
     public void dismantle(Equipment equipment) {
         Equipment checkedEq = getSpecificEquipment(equipment);
@@ -146,19 +143,17 @@ public class Player implements Attackable {
             if (equipment.isEquipped()) {
                 if (equipment instanceof Sword) {
                     count++;
-                    equipment.combat(monster);
+                    equipment.combat(monster, equipment);
                 } else if (equipment instanceof Scroll) {
                     count++;
+                    equipment.combat(monster, equipment);
+
                 }
             }
         }
         if (count == 0) {
             throw new IllegalStateException();
         }
-    }
-
-    public void durability(Monster monster) {
-
     }
 
 }

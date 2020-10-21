@@ -10,8 +10,12 @@ public class Stat {
     private int mana;
 
     public Stat(int hp, int mana) {
-        this.hp = hp;
-        this.mana = mana;
+        if (hp < 0 || hp > 100) {
+            this.hp = hp;
+        }
+        if (mana < 0 || mana > 100) {
+            this.mana = mana;
+        }
     }
 
     public int getHp() {

@@ -201,6 +201,36 @@ class PlayerTest {
     }
 
     @Test
+    void Player_Attacking_Vampire_With_Scroll_Decreases_Mana_With_7() {
+        Player p1 = new Player("Gladiator");
+        Equipment scroll = new Scroll(new StatEquipment(10, 10));
+        p1.addToInventory(scroll);
+        p1.putOn(scroll);
+        p1.damage(new Vampire(Now.getInstance()));
+        assertEquals(3, p1.getSpecificEquipment(scroll).getStats().getMana());
+    }
+
+    @Test
+    void Player_Attacking_Frankenstein_With_Scroll_Decreases_Mana_With_5() {
+        Player p1 = new Player("Gladiator");
+        Equipment scroll = new Scroll(new StatEquipment(10, 7));
+        p1.addToInventory(scroll);
+        p1.putOn(scroll);
+        p1.damage(Frankenstein.getInstance());
+        assertEquals(2, p1.getSpecificEquipment(scroll).getStats().getMana());
+    }
+
+    @Test
+    void Player_Attacking_Ghost_With_Scroll_Decreases_Mana_With_3() {
+        Player p1 = new Player("Gladiator");
+        Equipment scroll = new Scroll(new StatEquipment(10, 4));
+        p1.addToInventory(scroll);
+        p1.putOn(scroll);
+        p1.damage(new Ghost(10,Now.getInstance()));
+        assertEquals(1, p1.getSpecificEquipment(scroll).getStats().getMana());
+    }
+
+    @Test
     void Player_Attacking_With_No_Sword_Or_Scroll_Equipped_Results_In_ISE() {
         Player p1 = new Player("Gladiator");
         Equipment sword = new Sword(new StatEquipment(3, 4));
