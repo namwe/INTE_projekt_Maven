@@ -1,10 +1,13 @@
 package level;
 
-public abstract class Movable extends RoomTile{
-    private RoomTile originalTile;
-    private int[][] roomPosition;
+public abstract class Movable{
+    private Position position;
 
-    public Movable(char charRepresentation) {
-        super(charRepresentation, true);
+    public Movable(Position position) {
+        this.position = position;
+    }
+
+    public Position getPosition() {
+        return position;
     }
 }

@@ -7,7 +7,7 @@ public class Room {
 
 
     public Room(RoomTile[][] layout) {
-        if (!dimentionsAreOk(layout)) {
+        if (!dimensionsAreOk(layout)) {
             throw new IllegalArgumentException();
         }
         this.layout = layout;
@@ -23,7 +23,7 @@ public class Room {
         }
     }
 
-    private boolean dimentionsAreOk(RoomTile[][] layout) {
+    private boolean dimensionsAreOk(RoomTile[][] layout) {
         if (layout.length != HEIGHT) {
             return false;
         }
@@ -73,7 +73,7 @@ public class Room {
         return sb.toString();
     }
 
-    public void replaceTile(int row, int colomn, RoomTile tile) {
-        layout[row][colomn] = tile;
+    public void replaceTile(int row, int column, RoomTile tile) {
+        layout[row][column] = tile;
     }
 }
