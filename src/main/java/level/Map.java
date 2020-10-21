@@ -25,6 +25,13 @@ public class Map {
         return true;
     }
 
+    public Room getRoom(int row, int column){
+        return rooms[row][column];
+    }
+    public RoomTile getTile(Position position){
+        return rooms[position.getRoomRow()][position.getRoomColumn()].getTile(position.getTileRow(),position.getTileColumn());
+    }
+
     public Room[][] getRooms() {
         return rooms;
     }
