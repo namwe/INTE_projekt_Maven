@@ -1,6 +1,8 @@
 package character;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import monster.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -156,6 +158,16 @@ class PlayerTest {
         });
     }
 
+    @Test
+    void Player_Attacking_Frankenstein_With_Sword_Results_In_Thirty_Less_Hp() {
+        Player p1 = new Player("Gladiator");
+        Equipment sword = new Sword(new StatEquipment(5, 8));
+        p1.addToInventory(sword);
+        p1.putOn(sword);
+        p1.damage(Frankenstein.getInstance());
+        assertEquals(70, p1.getStats.getHP());
+
+    }
 
 
 
