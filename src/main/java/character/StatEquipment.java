@@ -1,5 +1,10 @@
 package character;
 
+import monster.Frankenstein;
+import monster.Ghost;
+import monster.Monster;
+import monster.Vampire;
+
 public class StatEquipment {
     private int condition;
     private int mana;
@@ -16,6 +21,17 @@ public class StatEquipment {
             this.mana = mana;
         }
 
+    }
+
+    public void takeDmg(Monster monster) {
+        if (monster instanceof Ghost) {
+            System.out.println("spoke");
+            condition = condition - 1;
+        } else if (monster instanceof Frankenstein) {
+            condition = condition - 2;
+        } else if (monster instanceof Vampire) {
+            condition = condition - 3;
+        }
     }
 
 

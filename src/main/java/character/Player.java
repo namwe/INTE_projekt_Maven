@@ -144,12 +144,13 @@ public class Player implements Attackable {
         for (Equipment equipment : equipments) {
             if (equipment.isEquipped()) {
                 if (equipment instanceof Sword) {
-                    equipment.getStats()
+                    equipment.combat(monster);
                 } else if (equipment instanceof Scroll) {
 
                 }
             }
         }
+        throw new IllegalStateException();
     }
 
     public void durability(Monster monster) {
