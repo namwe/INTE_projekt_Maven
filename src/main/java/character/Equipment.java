@@ -24,4 +24,14 @@ public abstract class Equipment {
     public StatEquipment getStats() {
         return stats;
     }
+
+    public void takeDmg(Monster monster) {
+        if (monster instanceof Ghost) {
+            hp = hp - 10;
+        } else if (monster instanceof Frankenstein) {
+            hp = hp - 20;
+        } else if (monster instanceof Vampire) {
+            hp = hp - 30;
+        }
+    }
 }

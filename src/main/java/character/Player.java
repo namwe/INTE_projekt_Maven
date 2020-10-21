@@ -21,6 +21,10 @@ public class Player implements Attackable {
         speed = 1;
     }
 
+    public Stat getPlayerStats() {
+        return playerStats;
+    }
+
     public void dismantle(Equipment equipment) {
         Equipment checkedEq = getSpecificEquipment(equipment);
         checkedEq.setEquipped(false);
@@ -140,7 +144,7 @@ public class Player implements Attackable {
         for (Equipment equipment : equipments) {
             if (equipment.isEquipped()) {
                 if (equipment instanceof Sword) {
-
+                    equipment.getStats()
                 } else if (equipment instanceof Scroll) {
 
                 }

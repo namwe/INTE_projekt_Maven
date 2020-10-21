@@ -165,7 +165,7 @@ class PlayerTest {
         p1.addToInventory(sword);
         p1.putOn(sword);
         p1.damage(Frankenstein.getInstance());
-        assertEquals(70, p1.getStats.getHP());
+        assertEquals(70, p1.getPlayerStats().getHp());
 
     }
 
