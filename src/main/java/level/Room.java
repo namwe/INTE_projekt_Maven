@@ -56,6 +56,10 @@ public class Room {
         return newLayout;
     }
 
+    public RoomTile getTile(int row, int column){
+        return layout[row][column];
+    }
+
     public RoomTile[][] getLayout() {
         return layout;
     }
