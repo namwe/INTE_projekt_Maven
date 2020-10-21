@@ -190,6 +190,17 @@ class PlayerTest {
         });
     }
 
+    @Test
+    void Player_Attacking_With_Equipment_Equipped_That_Is_Not_Sword_Or_Scroll_Results_In_ISE() {
+        Player p1 = new Player("Gladiator");
+        Equipment armor = new Armor(new StatEquipment(2, 8));
+        p1.addToInventory(armor);
+        p1.putOn(armor);
+        assertThrows(IllegalStateException.class, () -> {
+            p1.damage(new Ghost(20, Now.getInstance()));
+        });
+    }
+
 
 
 
