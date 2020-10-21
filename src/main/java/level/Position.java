@@ -42,6 +42,29 @@ public class Position {
         this.tileColumn = tileColumn;
     }
 
+    public Position getAdjacentPosition(Direction direction){
+        int tileRowChange = 0;
+        int tileColumnChange = 0;
+
+        switch (direction){
+            case NORTH:
+                tileRowChange = -1;
+                break;
+            case EAST:
+                tileColumnChange = 1;
+                break;
+            case WEST:
+                tileColumnChange = -1;
+                break;
+            case SOUTH:
+                tileRowChange = 1;
+                break;
+        }
+
+
+        return new Position(roomRow, roomColumn, tileRow + tileRowChange, tileColumn + tileColumnChange);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
