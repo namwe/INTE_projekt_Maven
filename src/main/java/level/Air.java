@@ -1,6 +1,6 @@
 package level;
 
-public class Air extends RoomTile{
+public class Air extends RoomTile {
     public static final char CHAR_REPRESENTATION = ' ';
     private static Air instance = new Air();
 

@@ -42,11 +42,11 @@ public class Position {
         this.tileColumn = tileColumn;
     }
 
-    public Position getAdjacentPosition(Direction direction){
+    public Position getAdjacentPosition(Direction direction) {
         int tileRowChange = 0;
         int tileColumnChange = 0;
 
-        switch (direction){
+        switch (direction) {
             case NORTH:
                 tileRowChange = -1;
                 break;

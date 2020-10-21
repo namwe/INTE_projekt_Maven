@@ -14,7 +14,7 @@ public class Room {
     }
 
     public Room(RoomType type) {
-        switch (type){
+        switch (type) {
             case DEFAULT_ROOM:
                 layout = Room.generateRoomWithWalls();
                 break;
@@ -56,7 +56,7 @@ public class Room {
         return newLayout;
     }
 
-    public RoomTile getTile(int row, int column){
+    public RoomTile getTile(int row, int column) {
         return layout[row][column];
     }
 
