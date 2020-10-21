@@ -37,12 +37,13 @@ public class Position {
             case EAST:
                 tileColumnChange = 1;
                 break;
-            case WEST:
-                tileColumnChange = -1;
-                break;
             case SOUTH:
                 tileRowChange = 1;
                 break;
+            case WEST:
+                tileColumnChange = -1;
+                break;
+
         }
 
 
