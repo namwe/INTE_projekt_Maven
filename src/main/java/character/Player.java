@@ -1,9 +1,14 @@
 package character;
 
+import monster.Frankenstein;
+import monster.Ghost;
+import monster.Monster;
+import monster.Vampire;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player implements Attackable {
     private Stat playerStats;
     private int speed;
     private String name;
@@ -129,6 +134,22 @@ public class Player {
 
 
         equipment.setEquipped(true);
+    }
+
+    public void damage(Monster monster) {
+        for (Equipment equipment : equipments) {
+            if (equipment.isEquipped()) {
+                if (equipment instanceof Sword) {
+
+                } else if (equipment instanceof Scroll) {
+
+                }
+            }
+        }
+    }
+
+    public void durability(Monster monster) {
+
     }
 
 }

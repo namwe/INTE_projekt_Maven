@@ -3,7 +3,7 @@ package character;
 
 import monster.*;
 
-public abstract class Equipment implements Attackable {
+public abstract class Equipment {
     private boolean equipped;
     private StatEquipment stats;
 
