@@ -181,6 +181,26 @@ class PlayerTest {
     }
 
     @Test
+    void Player_Attacking_Frankenstein_With_Sword_Decreases_Condition_With_Two() {
+        Player p1 = new Player("Gladiator");
+        Equipment sword = new Sword(new StatEquipment(6, 4));
+        p1.addToInventory(sword);
+        p1.putOn(sword);
+        p1.damage(Frankenstein.getInstance());
+        assertEquals(4, p1.getSpecificEquipment(sword).getStats().getCondition());
+    }
+
+    @Test
+    void Player_Attacking_Vampire_With_Sword_Decreases_Condition_With_Three() {
+        Player p1 = new Player("Gladiator");
+        Equipment sword = new Sword(new StatEquipment(9, 4));
+        p1.addToInventory(sword);
+        p1.putOn(sword);
+        p1.damage(new Vampire(Now.getInstance()));
+        assertEquals(6, p1.getSpecificEquipment(sword).getStats().getCondition());
+    }
+
+    @Test
     void Player_Attacking_With_No_Sword_Or_Scroll_Equipped_Results_In_ISE() {
         Player p1 = new Player("Gladiator");
         Equipment sword = new Sword(new StatEquipment(3, 4));
