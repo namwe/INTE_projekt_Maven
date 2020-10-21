@@ -61,14 +61,5 @@ public class Position {
         if (tileRow != position.tileRow) return false;
         return tileColumn == position.tileColumn;
     }
-
-    @Override
-    public int hashCode() {
-        int result = roomRow;
-        result = 31 * result + roomColumn;
-        result = 31 * result + tileRow;
-        result = 31 * result + tileColumn;
-        return result;
-    }
 }
 
