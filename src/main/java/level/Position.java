@@ -26,22 +26,6 @@ public class Position {
         return tileColumn;
     }
 
-    public void setRoomRow(int roomRow) {
-        this.roomRow = roomRow;
-    }
-
-    public void setRoomColumn(int roomColumn) {
-        this.roomColumn = roomColumn;
-    }
-
-    public void setTileRow(int tileRow) {
-        this.tileRow = tileRow;
-    }
-
-    public void setTileColumn(int tileColumn) {
-        this.tileColumn = tileColumn;
-    }
-
     public Position getAdjacentPosition(Direction direction) {
         int tileRowChange = 0;
         int tileColumnChange = 0;
