@@ -7,11 +7,4 @@ public class Armor extends Equipment {
         super(stats);
     }
 
-    public void damage() {
-
-    }
-
-    public void durability() {
-
-    }
 }

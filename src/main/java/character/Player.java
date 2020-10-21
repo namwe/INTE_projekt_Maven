@@ -138,6 +138,7 @@ public class Player implements Attackable {
     }
 
     public void damage(Monster monster) {
+        playerStats.takeDmg(monster);
         int count = 0;
         for (Equipment equipment : equipments) {
             if (equipment.isEquipped()) {
