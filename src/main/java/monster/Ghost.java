@@ -1,18 +1,19 @@
 package monster;
-
-import java.util.Calendar;
-
+//spöke synligt om midnatt, annars osynligt
+//Om 5000 eller mer starkare
 public class Ghost extends Monster {
-	//ok att sätta boolean till protected 
-	//för få åtkomst för att kunna sätta 
-	//båda state (true/false) test?
-	protected boolean invisible = true; //spöke är osynligt, synligt endast midnattstimmen
+	
+	private boolean invisible = true; 
 	private int age;
 	private final static int MAXAGE = 10000; 
+	private final static int THRESHOLDAGE = 5000;
 	private final static int MAXSTRENGTH = 70; 
+	private final static int MINSTRENGTH = 50; 
+	private final static int DEFAULTSPEED = 60; 
+	private final static int DEFAULTAGRESSIVENESS = 20;
 	
 	public Ghost(int age, Now n) {	
-		super((age >= 5000) ? MAXSTRENGTH : 50, 60, 20);
+		super((age >= THRESHOLDAGE) ? MAXSTRENGTH : MINSTRENGTH, DEFAULTSPEED, DEFAULTAGRESSIVENESS);
 		this.age = age;
 		if (n.isMidnight())
 			this.invisible = false;
@@ -20,11 +21,22 @@ public class Ghost extends Monster {
 			throw new IllegalArgumentException("Age " + this.age + " not allowed "); 
 	}
 		
-
+	
+	public boolean isInvisible(Now n){
+		 if (!n.isMidnight()) {
+			 invisible = true;
+			 }
+		 else { invisible = false;
+				 }
+		return invisible;
+	}
+		
+	
 	
 	public int getAge() {
     	return age;
     }
+	
 	
 	@Override
 	public void hurtMonster() {
@@ -35,19 +47,10 @@ public class Ghost extends Monster {
 			}
 			else {
 				if (this.strength <= 25);
-				this.strength = 20;
+				this.strength = 25;
 				//System.out.println("Spöken kan inte dö, styrkan minskar bara till 20");
-			}
-			
-		
+			}		
 	}
-	
-	
-	public boolean isInvisible(){
-	return invisible;	
-	}
-	
-	
 	
 	
 	public String invisibleToString() {
@@ -58,10 +61,11 @@ public class Ghost extends Monster {
 			}
 	}
 	
+	
+	
 	@Override
 	public String toString() {
-		return super.toString() + " " + age + " " +invisibleToString(); 
-		
+		return super.toString() + " " + age + " " +invisibleToString(); 	
 	}
 	
 
