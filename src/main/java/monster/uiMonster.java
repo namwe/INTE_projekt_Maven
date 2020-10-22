@@ -1,6 +1,5 @@
 package monster;
 
-import java.util.Calendar;
 
 public class uiMonster {
 	
@@ -8,40 +7,66 @@ public class uiMonster {
 		
 
 		
+		Frankenstein  f = Frankenstein.getInstance(); 
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
+		/*
+		System.out.println("sover");
+		try {
+			Thread.sleep(1000*25);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		*/
+		f.hurtMonster();
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
 		
 		
-		
-		
-		
-		
-		Calendar rightNow = Calendar.getInstance();
-		int hour = rightNow.get(Calendar.HOUR_OF_DAY);
-		System.out.println(hour);
-		
-		
-	Now n = Now.getInstance();
-	Ghost g = new Ghost(4999, n); 
-	g.hurtMonster();
-	System.out.println(g);
-	g.hurtMonster();
-	System.out.println(g);
-	g.hurtMonster();
-	System.out.println(g);
-	g.hurtMonster();
-	System.out.println(g);
-	g.hurtMonster();
-	System.out.println(g);
-	g.hurtMonster();
-	System.out.println(g);
+		f.hurtMonster();
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
+		System.out.println("sover");
+		try {
+			Thread.sleep(1000*15);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		f.hurtMonster();
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
+		f.hurtMonster();
+		System.out.println(f);
 		
 
-		
-		
-		
 	
-	
-	
-		
 		
 	}
 }	

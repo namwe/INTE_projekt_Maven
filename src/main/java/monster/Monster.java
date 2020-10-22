@@ -4,8 +4,8 @@ public abstract class Monster {
 	
 	
 	protected int strength; 
-	private int speed; 
-	private int aggressiveness; 
+	protected int speed; 
+	protected int aggressiveness; 
 	
 	
     

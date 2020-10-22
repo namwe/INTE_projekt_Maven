@@ -15,7 +15,7 @@ class FrankensteinTest {
 	@Test
 	void FrankensteinGetInstanceSetsCorrectValuesTest() {
 		Frankenstein f = Frankenstein.getInstance(); 
-		assertEquals(60, f.getStrength());
+		assertEquals(80, f.getStrength());
 		assertEquals(20, f.getSpeed());	
 		assertEquals(30, f.getAggressiveness());	
 	}
@@ -34,30 +34,61 @@ class FrankensteinTest {
 		Frankenstein f2 = Frankenstein.getInstance();
 		assertNotNull(f2);
 	}
-	
-	
-	@Test
-	void setStrengthSetsCorrectValuesTest() {
-		Frankenstein f = Frankenstein.getInstance(); 
-		assertEquals(60, f.getStrength());	
-	}
 		
 	
 	@Test
-	void hurtMonsterDecreasesStrengthBy10Percent(){
+	void hurtMonsterDecreasesStrengthBy5IncreasesAggBy5Test(){
 		Frankenstein f = Frankenstein.getInstance(); 
 		f.hurtMonster();
-		assertEquals(54, f.getStrength());
-		
+		assertEquals(75, f.getStrength());
+		assertEquals(35, f.getAggressiveness());	
 	}
 	
 	@Test
-	void hurtMonsterSetsStrengthToZeroIfStrengthLessThan2Test(){
+	void hurtMonsterKillsIfStrengthLessThan6Test(){
 		Frankenstein f = Frankenstein.getInstance(); 
-		f.strength = 0;
+		f.strength = 5;
 		f.hurtMonster();
 		assertEquals(0, f.getStrength());
+		assertEquals(0, f.getSpeed());	
+		assertEquals(0, f.getAggressiveness());
 	}
+	
+	//Göra detta med mockobjekt genom privata metoderna?
+	
+	@Test
+	void recoverAfter15SecIncreasesStrengthBy5DecreasesAggBy5Test(){
+		Frankenstein f = Frankenstein.getInstance(); 
+		f.hurtMonster();
+		f.hurtMonster();
+		try {
+			Thread.sleep(1000*15);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		f.hurtMonster();
+		assertEquals(70, f.getStrength());
+		assertEquals(40, f.getAggressiveness());
+	}
+	
+	
+	@Test
+	void recoverAfter25SecIncreasesStrengthBy5DecreasesAggBy5Test(){
+		Frankenstein f = Frankenstein.getInstance(); 
+		f.hurtMonster();
+		f.hurtMonster();
+		try {
+			Thread.sleep(1000*25);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		f.hurtMonster();
+		assertEquals(80, f.getStrength());
+		assertEquals(20, f.getSpeed());	
+		assertEquals(30, f.getAggressiveness());
+	}
+	
+	
 	
 	
 	
@@ -65,22 +96,30 @@ class FrankensteinTest {
 	void reviveDeadFrankensteinTest() {
 		Frankenstein f = Frankenstein.getInstance(); 
 		f.strength = 0;
-		f.revive();
-		assertEquals(60, f.getStrength());	
+		f.reviveFromDead();
+		assertEquals(80, f.getStrength());
+		assertEquals(20, f.getSpeed());	
+		assertEquals(30, f.getAggressiveness());	
 	}
 	@Test
 	void reviveLivingFrankensteinTest() {
 		Frankenstein f = Frankenstein.getInstance(); 
-		f.strength = 1;
-		f.revive();
-		assertEquals(1, f.getStrength());	
+		f.strength = 25;
+		f.reviveFromDead();
+		assertEquals(25, f.getStrength());	
 	}
 	
 	
+	
+	
 	@AfterEach
-    public void setStrengtToInitialStrength(){
+    public void resetValues(){
 		Frankenstein f = Frankenstein.getInstance(); 
-		f.strength = 60;
+		f.strength = 80;
+		f.speed = 20;
+		f.aggressiveness = 30;
     }
+    
+    
 	
 }
