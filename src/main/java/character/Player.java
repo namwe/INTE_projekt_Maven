@@ -1,9 +1,14 @@
 package character;
 
+import monster.Frankenstein;
+import monster.Ghost;
+import monster.Monster;
+import monster.Vampire;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player implements Attackable {
     private Stat playerStats;
     private int speed;
     private String name;
@@ -15,6 +20,7 @@ public class Player {
         playerStats = new Stat(100,50);
         speed = 1;
     }
+
 
     public void dismantle(Equipment equipment) {
         Equipment checkedEq = getSpecificEquipment(equipment);
@@ -129,6 +135,26 @@ public class Player {
 
 
         equipment.setEquipped(true);
+    }
+
+    public void damage(Monster monster) {
+        playerStats.takeDmg(monster);
+        int count = 0;
+        for (Equipment equipment : equipments) {
+            if (equipment.isEquipped()) {
+                if (equipment instanceof Sword) {
+                    count++;
+                    equipment.combat(monster, equipment);
+                } else if (equipment instanceof Scroll) {
+                    count++;
+                    equipment.combat(monster, equipment);
+
+                }
+            }
+        }
+        if (count == 0) {
+            throw new IllegalStateException();
+        }
     }
 
 }

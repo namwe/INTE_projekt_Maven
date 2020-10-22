@@ -1,4 +1,5 @@
 package character;
+import monster.*;
 
 public class Sword extends Equipment {
 
@@ -8,12 +9,4 @@ public class Sword extends Equipment {
 
     }
 
-
-    public void damage() {
-
-    }
-
-    public void durability() {
-
-    }
 }

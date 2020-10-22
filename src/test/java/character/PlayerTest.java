@@ -1,6 +1,9 @@
 package character;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import monster.*;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -156,6 +159,97 @@ class PlayerTest {
         });
     }
 
+    @Disabled
+    void Player_Attacking_Frankenstein_With_Sword_Results_In_Thirty_Less_Hp() {
+        Player p1 = new Player("Gladiator");
+        Equipment sword = new Sword(new StatEquipment(5, 8));
+        p1.addToInventory(sword);
+        p1.putOn(sword);
+        p1.damage(Frankenstein.getInstance());
+       // assertEquals(70, p1.getPlayerStats().getHp());
+
+    }
+
+    @Test
+    void Player_Attacking_Ghost_With_Sword_Decreases_Condition_With_One() {
+        Player p1 = new Player("Gladiator");
+        Equipment sword = new Sword(new StatEquipment(3, 4));
+        p1.addToInventory(sword);
+        p1.putOn(sword);
+        p1.damage(new Ghost(20, Now.getInstance()));
+        assertEquals(2, p1.getSpecificEquipment(sword).getStats().getCondition());
+    }
+
+    @Test
+    void Player_Attacking_Frankenstein_With_Sword_Decreases_Condition_With_Two() {
+        Player p1 = new Player("Gladiator");
+        Equipment sword = new Sword(new StatEquipment(6, 4));
+        p1.addToInventory(sword);
+        p1.putOn(sword);
+        p1.damage(Frankenstein.getInstance());
+        assertEquals(4, p1.getSpecificEquipment(sword).getStats().getCondition());
+    }
+
+    @Test
+    void Player_Attacking_Vampire_With_Sword_Decreases_Condition_With_Three() {
+        Player p1 = new Player("Gladiator");
+        Equipment sword = new Sword(new StatEquipment(9, 4));
+        p1.addToInventory(sword);
+        p1.putOn(sword);
+        p1.damage(new Vampire(Now.getInstance()));
+        assertEquals(6, p1.getSpecificEquipment(sword).getStats().getCondition());
+    }
+
+    @Test
+    void Player_Attacking_Vampire_With_Scroll_Decreases_Mana_With_7() {
+        Player p1 = new Player("Gladiator");
+        Equipment scroll = new Scroll(new StatEquipment(10, 10));
+        p1.addToInventory(scroll);
+        p1.putOn(scroll);
+        p1.damage(new Vampire(Now.getInstance()));
+        assertEquals(3, p1.getSpecificEquipment(scroll).getStats().getMana());
+    }
+
+    @Test
+    void Player_Attacking_Frankenstein_With_Scroll_Decreases_Mana_With_5() {
+        Player p1 = new Player("Gladiator");
+        Equipment scroll = new Scroll(new StatEquipment(10, 7));
+        p1.addToInventory(scroll);
+        p1.putOn(scroll);
+        p1.damage(Frankenstein.getInstance());
+        assertEquals(2, p1.getSpecificEquipment(scroll).getStats().getMana());
+    }
+
+    @Test
+    void Player_Attacking_Ghost_With_Scroll_Decreases_Mana_With_3() {
+        Player p1 = new Player("Gladiator");
+        Equipment scroll = new Scroll(new StatEquipment(10, 4));
+        p1.addToInventory(scroll);
+        p1.putOn(scroll);
+        p1.damage(new Ghost(10,Now.getInstance()));
+        assertEquals(1, p1.getSpecificEquipment(scroll).getStats().getMana());
+    }
+
+    @Test
+    void Player_Attacking_With_No_Sword_Or_Scroll_Equipped_Results_In_ISE() {
+        Player p1 = new Player("Gladiator");
+        Equipment sword = new Sword(new StatEquipment(3, 4));
+        p1.addToInventory(sword);
+        assertThrows(IllegalStateException.class, () -> {
+            p1.damage(new Ghost(20, Now.getInstance()));
+        });
+    }
+
+    @Test
+    void Player_Attacking_With_Equipment_Equipped_That_Is_Not_Sword_Or_Scroll_Results_In_ISE() {
+        Player p1 = new Player("Gladiator");
+        Equipment armor = new Armor(new StatEquipment(2, 8));
+        p1.addToInventory(armor);
+        p1.putOn(armor);
+        assertThrows(IllegalStateException.class, () -> {
+            p1.damage(new Ghost(20, Now.getInstance()));
+        });
+    }
 
 
 
