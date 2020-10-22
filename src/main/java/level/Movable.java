@@ -16,6 +16,10 @@ public abstract class Movable extends RoomTile {
         return position;
     }
 
+    public Map getMap() {
+        return map;
+    }
+
     public void move(Direction direction) {
         Position nextPosition = position.getAdjacentPosition(direction);
 
