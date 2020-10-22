@@ -56,8 +56,21 @@ public class Room {
         return newLayout;
     }
 
+    public void replaceTile(int row, int column, RoomTile tile) {
+        layout[row][column] = tile;
+    }
+
     public RoomTile[][] getLayout() {
         return layout;
+    }
+
+    public String rowToString(int index){
+        StringBuilder sb = new StringBuilder();
+        for (RoomTile tile : layout[index]) {
+            sb.append(tile);
+            sb.append(' ');
+        }
+        return sb.toString();
     }
 
     @Override
@@ -73,7 +86,5 @@ public class Room {
         return sb.toString();
     }
 
-    public void replaceTile(int row, int column, RoomTile tile) {
-        layout[row][column] = tile;
-    }
+
 }

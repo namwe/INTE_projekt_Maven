@@ -66,4 +66,19 @@ public class Map {
             }
         }
     }
+
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < Room.HEIGHT; i++) {
+            sb.append(rooms[0][0].rowToString(i));
+            sb.append(rooms[0][1].rowToString(i));
+            sb.append("\n");
+        }
+        for (int i = 0; i < Room.HEIGHT; i++) {
+            sb.append(rooms[1][0].rowToString(i));
+            sb.append(rooms[1][1].rowToString(i));
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }
