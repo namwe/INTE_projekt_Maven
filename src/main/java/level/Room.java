@@ -14,7 +14,7 @@ public class Room {
     }
 
     public Room(RoomType type) {
-        switch (type){
+        switch (type) {
             case DEFAULT_ROOM:
                 layout = Room.generateRoomWithWalls();
                 break;

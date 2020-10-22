@@ -26,20 +26,28 @@ public class Position {
         return tileColumn;
     }
 
-    public void setRoomRow(int roomRow) {
-        this.roomRow = roomRow;
-    }
+    public Position getAdjacentPosition(Direction direction) {
+        int tileRowChange = 0;
+        int tileColumnChange = 0;
 
-    public void setRoomColumn(int roomColumn) {
-        this.roomColumn = roomColumn;
-    }
+        switch (direction) {
+            case NORTH:
+                tileRowChange = -1;
+                break;
+            case EAST:
+                tileColumnChange = 1;
+                break;
+            case SOUTH:
+                tileRowChange = 1;
+                break;
+            case WEST:
+                tileColumnChange = -1;
+                break;
 
-    public void setTileRow(int tileRow) {
-        this.tileRow = tileRow;
-    }
+        }
 
-    public void setTileColumn(int tileColumn) {
-        this.tileColumn = tileColumn;
+
+        return new Position(roomRow, roomColumn, tileRow + tileRowChange, tileColumn + tileColumnChange);
     }
 
     @Override
@@ -53,15 +61,6 @@ public class Position {
         if (roomColumn != position.roomColumn) return false;
         if (tileRow != position.tileRow) return false;
         return tileColumn == position.tileColumn;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = roomRow;
-        result = 31 * result + roomColumn;
-        result = 31 * result + tileRow;
-        result = 31 * result + tileColumn;
-        return result;
     }
 }
 

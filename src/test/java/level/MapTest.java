@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 class MapTest {
     @Test
     void constructorSetsRooms(){
-        Room[][] rooms = defaultRoomsOracle();
+        Room[][] rooms = defaultRoomsMapOracle();
         Map m = new Map(rooms);
         assertEquals(rooms, m.getRooms());
     }
@@ -22,7 +22,7 @@ class MapTest {
 
     @Test
     void placeDoorsTest(){
-        Room[][] rooms = defaultRoomsOracle();
+        Room[][] rooms = defaultRoomsMapOracle();
         Map m = new Map(rooms);
         m.placeDoors();
 
@@ -40,7 +40,22 @@ class MapTest {
         assertEquals(Door.getInstance(), m.getRooms()[1][1].getLayout()[4][0]);
     }
 
-    private Room[][] defaultRoomsOracle(){
+    @Test
+    void getTile() {
+        Map m = new Map(defaultRoomsMapOracle());
+        Position p = new Position(0, 0, 0, 0);
+        assertEquals(Wall.getInstance(), m.getTile(p));
+    }
+
+    @Test
+    void replaceTile() {
+        Map m = new Map(defaultRoomsMapOracle());
+        Position p = new Position(0, 0, 0, 0);
+        m.replaceTile(p, Air.getInstance());
+        assertEquals(Air.getInstance(), m.getTile(p));
+    }
+
+    private Room[][] defaultRoomsMapOracle(){
         Room[][] rooms = new Room[Map.HEIGHT][Map.WIDTH];
         for (int i = 0; i < rooms.length; i++) {
             for (int j = 0; j < rooms[0].length; j++) {
@@ -49,6 +64,4 @@ class MapTest {
         }
         return rooms;
     }
-
-
 }
