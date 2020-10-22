@@ -39,6 +39,6 @@ public abstract class Movable extends RoomTile {
         } catch (IndexOutOfBoundsException ex) {
             return false;
         }
-        return nextTile.isSolid();
+        return !nextTile.isSolid();
     }
 }
