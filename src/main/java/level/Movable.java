@@ -46,6 +46,7 @@ public abstract class Movable extends RoomTile {
             case WEST:
                 return new Position(position.getRoomRow(), position.getRoomColumn() - 1, position.getTileRow(), Room.WIDTH - 2);
         }
+        //Can't happen
         return null;
     }
 

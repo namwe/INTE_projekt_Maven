@@ -46,6 +46,42 @@ public class MovableTest {
         assertEquals('T', m.getMap().getTile(p).getCharRepresentation());
     }
 
+    @Test
+    void moveThroughEasternDoor(){
+        map.placeDoors();
+        Position p = new Position(0,0,4,7);
+        Movable m = new ConcreteMovable('T', p, map);
+        m.move(Direction.EAST);
+        assertEquals('T', map.getTile(new Position(0, 1, 4, 1)).getCharRepresentation());
+    }
+
+    @Test
+    void moveThroughSouthernDoor(){
+        map.placeDoors();
+        Position p = new Position(0,0,7,4);
+        Movable m = new ConcreteMovable('T', p, map);
+        m.move(Direction.SOUTH);
+        assertEquals('T', map.getTile(new Position(1, 0, 1, 4)).getCharRepresentation());
+    }
+
+    @Test
+    void moveThroughNorthernDoor(){
+        map.placeDoors();
+        Position p = new Position(1,0,1,4);
+        Movable m = new ConcreteMovable('T', p, map);
+        m.move(Direction.NORTH);
+        assertEquals('T', map.getTile(new Position(0, 0, 7, 4)).getCharRepresentation());
+    }
+
+    @Test
+    void moveThroughWesternDoor(){
+        map.placeDoors();
+        Position p = new Position(0, 1, 4, 1);
+        Movable m = new ConcreteMovable('T', p, map);
+        m.move(Direction.WEST);
+        assertEquals('T', map.getTile(new Position(0,0,4,7)).getCharRepresentation());
+    }
+
     private Room[][] defaultRoomsMapOracle(){
         Room[][] rooms = new Room[Map.HEIGHT][Map.WIDTH];
         for (int i = 0; i < rooms.length; i++) {
