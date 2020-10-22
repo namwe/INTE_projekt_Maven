@@ -26,10 +26,27 @@ public abstract class Movable extends RoomTile {
         if (!allowedMovment(nextPosition)) {
             return;
         }
+        if (map.getTile(nextPosition) == Door.getInstance()) {
+            nextPosition = nextRoomPosition(direction);
+        }
 
         map.replaceTile(position, originalTile);
         position = nextPosition;
         originalTile = map.replaceTile(nextPosition, this);
+    }
+
+    private Position nextRoomPosition(Direction direction) {
+        switch (direction) {
+            case NORTH:
+                return new Position(position.getRoomRow() - 1, position.getRoomColumn(), Room.HEIGHT - 2, position.getTileColumn());
+            case EAST:
+                return new Position(position.getRoomRow(), position.getRoomColumn() + 1, position.getTileRow(), 1);
+            case SOUTH:
+                return new Position(position.getRoomRow() + 1, position.getRoomColumn(), 1, position.getTileColumn());
+            case WEST:
+                return new Position(position.getRoomRow(), position.getRoomColumn() - 1, position.getTileRow(), Room.WIDTH - 2);
+        }
+        return null;
     }
 
     private boolean allowedMovment(Position nextPosition) {
