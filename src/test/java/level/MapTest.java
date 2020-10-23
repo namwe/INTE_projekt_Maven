@@ -10,7 +10,7 @@ class MapTest {
     void constructorSetsRooms(){
         Room[][] rooms = defaultRoomsMapOracle();
         Map m = new Map(rooms);
-        assertEquals(rooms, m.getRooms());
+        assertArrayEquals(rooms, m.getRooms());
     }
 
     @ParameterizedTest
