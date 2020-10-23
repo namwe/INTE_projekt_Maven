@@ -13,15 +13,15 @@ public class Player extends Movable implements Attackable {
     private List<Equipment> equipments = new ArrayList<>();
 
     public Player(String name, char charRepresentation, Position position, Map map) {
-        super(charRepresentation, position, map); // En spelar spawnar med ett svärd i sin inventory
+        super(charRepresentation, position, map);
         this.name = name;
-        equipments.add(new Sword(new StatEquipment(10,0)));
+        equipments.add(new Sword(new StatEquipment(10,0))); // En spelar spawnar med ett svärd i sin inventory
         playerStats = new Stat(100,50);
         speed = 1;
     }
 
 
-    public void unequip(Equipment equipment) {
+    public void unEquip(Equipment equipment) {
         Equipment checkedEq = getEquipmentWithSpecificStats(equipment);
         checkedEq.setEquipped(false);
     }
