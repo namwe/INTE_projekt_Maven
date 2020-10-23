@@ -1,25 +1,27 @@
 package character;
 
 import monster.Monster;
+import level.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player implements Attackable {
+public class Player extends Movable implements Attackable {
     private Stat playerStats;
     private int speed;
     private String name;
     private List<Equipment> equipments = new ArrayList<>();
 
-    public Player(String name) { // En spelar spawnar med ett svärd i sin inventory
-        this.name = name;
-        equipments.add(new Sword(new StatEquipment(10,0)));
+    public Player(String name, char charRepresentation, Position position, Map map) {
+        super(charRepresentation, position, map);
+        if (name == null) { throw new IllegalArgumentException(); } else { this.name = name; }
+        equipments.add(new Sword(new StatEquipment(10,0))); // En spelar spawnar med ett svärd i sin inventory
         playerStats = new Stat(100,50);
         speed = 1;
     }
 
 
-    public void dismantle(Equipment equipment) {
+    public void unEquip(Equipment equipment) {
         Equipment checkedEq = getEquipmentWithSpecificStats(equipment);
         checkedEq.setEquipped(false);
     }

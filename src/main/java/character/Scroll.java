@@ -1,5 +1,6 @@
 package character;
 
+
 public class Scroll extends Equipment {
 
 

@@ -10,6 +10,8 @@ private boolean secondEquipped;
         secondEquipped = false;
     }
 
+
+
     public boolean isSecondEquipped() {
         return secondEquipped;
     }

@@ -12,6 +12,7 @@ public abstract class Movable extends RoomTile {
         originalTile = map.replaceTile(position, this);
     }
 
+
     public Position getPosition() {
         return position;
     }
