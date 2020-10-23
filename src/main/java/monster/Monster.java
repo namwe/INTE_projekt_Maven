@@ -43,24 +43,6 @@ public abstract class Monster extends Movable  {
 	
 	
 	public String toString() {
-		TypeOfMonster m = this.getMonsterType();
-		String s; 
-	/*	switch (m){
-		   case VAMPIRE:
-			   s = "Vampire";
-		      break;
-		   
-		   case 2:
-		      // Operation / Flera operationer ... 
-		      break;
-		   case 3:
-		      // Operation / Flera operationer ... 
-			   break; 
-		   default:
-		      // Operation / Flera operationer ... 
-		      break;
-		}
-	*/
 		return this.getMonsterType() + " " + strength + " " + speed + " " + aggressiveness;
 	}
 
