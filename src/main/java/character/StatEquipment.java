@@ -5,7 +5,7 @@ import monster.Ghost;
 import monster.Monster;
 import monster.Vampire;
 
-public class StatEquipment {
+public class StatEquipment  {
     private int condition;
     private int mana;
 
@@ -56,4 +56,6 @@ public class StatEquipment {
     public String toString() {
         return "condition = " + condition + " mana = " + mana;
     }
+
+
 }

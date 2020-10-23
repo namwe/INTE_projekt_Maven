@@ -16,8 +16,8 @@ class PlayerTest {
     public void Player_Has_Default_Values_On_Sword_When_Spawned() {
         Player p1 = new Player("Gladiator");
         Equipment defComp = new Sword(new StatEquipment(10, 0));
-        assertEquals(p1.getSpecificEquipment(defComp).getStats().getCondition(), defComp.getStats().getCondition());
-        assertEquals(p1.getSpecificEquipment(defComp).getStats().getMana(), defComp.getStats().getMana());
+        assertEquals(p1.getEquipmentWithSpecificStats(defComp).getStats().getCondition(), defComp.getStats().getCondition());
+        assertEquals(p1.getEquipmentWithSpecificStats(defComp).getStats().getMana(), defComp.getStats().getMana());
     }
 
     @Test
@@ -26,6 +26,30 @@ class PlayerTest {
         List<Equipment> equipments = p1.getEquipments();
         p1.putOn(equipments.get(0));
         assertTrue(equipments.get(0).isEquipped());
+    }
+
+    @Test
+    public void Sword_With_Same_Stats_And_Not_Equipped_Are_Same_Object() {
+        Equipment equipment = new Sword(new StatEquipment(3,7));
+        Equipment equipment2 = new Sword(new StatEquipment(3,7));
+        assertEquals(0, equipment.compareTo(equipment2));
+    }
+
+    @Test
+    public void Scroll_With_Same_Condition_But_Different_Mana_Are_Not_Same() {
+        Equipment equipment = new Scroll(new StatEquipment(5, 3));
+        Equipment equipment2 = new Scroll(new StatEquipment(5, 2));
+        assertEquals(1, equipment.compareTo(equipment2));
+    }
+
+
+    @Test
+    public void Scroll_With_Same_Stats_And_Equipped_Are_Same_Equipment() {
+        Equipment equipment = new Scroll(new StatEquipment(5, 3));
+        Equipment equipment2 = new Scroll(new StatEquipment(5, 3));
+        equipment.setEquipped(false);
+        equipment2.setEquipped(false);
+        assertEquals(0, equipment.compareTo(equipment2));
     }
 
     @Test
@@ -62,7 +86,7 @@ class PlayerTest {
         Equipment eq = new Armor(new StatEquipment(3,10));
         player.addToInventory(eq);
         player.putOn(eq);
-        assertTrue(player.getSpecificEquipment(eq).isEquipped());
+        assertTrue(player.getEquipmentWithSpecificStats(eq).isEquipped());
     }
 
     @Test
@@ -137,7 +161,7 @@ class PlayerTest {
         p1.addToInventory(e1);
         p1.putOn(e1);
         p1.dismantle(e1);
-        assertFalse(p1.getSpecificEquipment(e1).isEquipped());
+        assertFalse(p1.getEquipmentWithSpecificStats(e1).isEquipped());
 
     }
 
@@ -177,7 +201,7 @@ class PlayerTest {
         p1.addToInventory(sword);
         p1.putOn(sword);
         p1.damage(new Ghost(20, Now.getInstance()));
-        assertEquals(2, p1.getSpecificEquipment(sword).getStats().getCondition());
+        assertEquals(2, p1.getEquipmentWithSpecificStats(sword).getStats().getCondition());
     }
 
     @Test
@@ -187,7 +211,7 @@ class PlayerTest {
         p1.addToInventory(sword);
         p1.putOn(sword);
         p1.damage(Frankenstein.getInstance());
-        assertEquals(4, p1.getSpecificEquipment(sword).getStats().getCondition());
+        assertEquals(4, p1.getEquipmentWithSpecificStats(sword).getStats().getCondition());
     }
 
     @Test
@@ -197,7 +221,7 @@ class PlayerTest {
         p1.addToInventory(sword);
         p1.putOn(sword);
         p1.damage(new Vampire(Now.getInstance()));
-        assertEquals(6, p1.getSpecificEquipment(sword).getStats().getCondition());
+        assertEquals(6, p1.getEquipmentWithSpecificStats(sword).getStats().getCondition());
     }
 
     @Test
@@ -207,7 +231,7 @@ class PlayerTest {
         p1.addToInventory(scroll);
         p1.putOn(scroll);
         p1.damage(new Vampire(Now.getInstance()));
-        assertEquals(3, p1.getSpecificEquipment(scroll).getStats().getMana());
+        assertEquals(3, p1.getEquipmentWithSpecificStats(scroll).getStats().getMana());
     }
 
     @Test
@@ -217,7 +241,7 @@ class PlayerTest {
         p1.addToInventory(scroll);
         p1.putOn(scroll);
         p1.damage(Frankenstein.getInstance());
-        assertEquals(2, p1.getSpecificEquipment(scroll).getStats().getMana());
+        assertEquals(2, p1.getEquipmentWithSpecificStats(scroll).getStats().getMana());
     }
 
     @Test
@@ -227,7 +251,7 @@ class PlayerTest {
         p1.addToInventory(scroll);
         p1.putOn(scroll);
         p1.damage(new Ghost(10,Now.getInstance()));
-        assertEquals(1, p1.getSpecificEquipment(scroll).getStats().getMana());
+        assertEquals(1, p1.getEquipmentWithSpecificStats(scroll).getStats().getMana());
     }
 
     @Test

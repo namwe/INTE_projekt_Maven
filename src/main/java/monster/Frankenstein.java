@@ -9,7 +9,6 @@ public class Frankenstein extends Monster {
 	private static final int DEFAULTSTRENGTH = 80;
 	private final static int DEFAULTSPEED = 20;
 	private final static int DEFAULTAGRESSIVENESS = 30;
-	private long attackTimeStamp;
 	private long lastAttackTimeStamp;
 
 	private Frankenstein() {
@@ -43,7 +42,7 @@ public class Frankenstein extends Monster {
 			} else {
 				killFrankenstein();
 			}
-			attackTimeStamp = System.currentTimeMillis();
+			long attackTimeStamp = System.currentTimeMillis();
 			recover(attackTimeStamp);
 		}
 	}
