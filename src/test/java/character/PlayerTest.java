@@ -29,7 +29,20 @@ class PlayerTest {
     }
 
     @Test
-    public void Sword_
+    public void Sword_With_Same_Stats_Are_Not_Same_Object() {
+        Equipment equipment = new Sword(new StatEquipment(3,7));
+        Equipment equipment2 = new Sword(new StatEquipment(3,7));
+        assertEquals(0, equipment.compareTo(equipment2));
+    }
+
+    @Test
+    public void Scroll_With_Same_Stats_And_Equipped_Are_Same_Equipment() {
+        Equipment equipment = new Scroll(new StatEquipment(5, 3));
+        Equipment equipment2 = new Scroll(new StatEquipment(5, 3));
+        equipment.setEquipped(true);
+        equipment2.setEquipped(true);
+        assertEquals(1, equipment.compareTo(equipment2));
+    }
 
     @Test
     public void Player_Can_Never_Spawn_Without_An_Equipment() {

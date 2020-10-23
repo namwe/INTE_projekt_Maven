@@ -31,7 +31,9 @@ public class Equipment implements Comparable<Equipment> {
         return stats.getCondition();
     }
 
-    private int get
+    private int getStatsMana() {
+        return stats.getMana();
+    }
 
     public void combat(Monster monster, Equipment equipment) {
         if (equipment instanceof Sword) {
@@ -43,6 +45,8 @@ public class Equipment implements Comparable<Equipment> {
 
     @Override
     public int compareTo(Equipment o) {
-        return Comparator.comparing(Equipment::getStatsCondition).thenComparing()
+        return Comparator.comparingInt(Equipment::getStatsCondition).
+                thenComparingInt(Equipment::getStatsMana).
+                thenComparing(Equipment::isEquipped).compare(this, o);
     }
 }
