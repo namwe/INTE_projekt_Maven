@@ -3,7 +3,7 @@ package monster;
 
 public class uiMonster {
 	
-	public static void main (String[] args) {
+	/*public static void main (String[] args) {
 		
 
 		
@@ -22,6 +22,7 @@ public class uiMonster {
 		}
 		
 		*/
+	/*
 		f.hurtMonster();
 		System.out.println(f);
 		f.hurtMonster();
@@ -64,12 +65,15 @@ public class uiMonster {
 		System.out.println(f);
 		f.hurtMonster();
 		System.out.println(f);
+
+	 */
 		
 
 	
 		
 	}
-}	
+
+//}
 		
 		
 	
