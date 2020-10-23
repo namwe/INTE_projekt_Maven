@@ -13,4 +13,12 @@ class SwordTest {
         assertEquals(0, equipment.compareTo(equipment2));
     }
 
+    @Test
+    public void Sword_Is_Equipped() {
+        Equipment equipment = new Sword(new StatEquipment(2,5));
+        equipment.setEquipped(true);
+        assertTrue(equipment.isEquipped());
+    }
+
+
 }
