@@ -29,6 +29,9 @@ class PlayerTest {
     }
 
     @Test
+    public void Sword_
+
+    @Test
     public void Player_Can_Never_Spawn_Without_An_Equipment() {
         Player p1 = new Player("Gladiator");
         assertNotEquals(0, p1.getSizeOfInventory());

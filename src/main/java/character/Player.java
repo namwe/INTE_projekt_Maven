@@ -130,7 +130,7 @@ public class Player implements Attackable {
     //*** En metod som kollar om det går att sätta på ett equipment ***//
     public void putOn(Equipment eq) {
 
-        eq = getEquipmentWithSpecificStats(eq);
+        //eq = getEquipmentWithSpecificStats(eq);
         checkBooleanOnEquipments(eq);
 
 
@@ -156,5 +156,6 @@ public class Player implements Attackable {
             throw new IllegalStateException();
         }
     }
+
 
 }
