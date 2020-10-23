@@ -3,8 +3,6 @@ package monster;
 import character.Equipment;
 import character.Scroll;
 
-//spöke synligt om midnatt, annars osynligt
-//Om 5000 eller mer starkare
 public class Ghost extends Monster {
 
 	private boolean invisible = true;
@@ -22,7 +20,7 @@ public class Ghost extends Monster {
 		if (n.isMidnight())
 			this.invisible = false;
 		if (this.age < 0 || this.age > MAXAGE)
-			throw new IllegalArgumentException("Age " + this.age + " not allowed ");
+			throw new IllegalArgumentException("Age " + age + " not allowed ");
 	}
 
 	public boolean isInvisible(Now n) {
