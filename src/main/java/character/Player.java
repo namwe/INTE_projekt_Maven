@@ -21,7 +21,7 @@ public class Player extends Movable implements Attackable {
     }
 
 
-    public void dismantle(Equipment equipment) {
+    public void unequip(Equipment equipment) {
         Equipment checkedEq = getEquipmentWithSpecificStats(equipment);
         checkedEq.setEquipped(false);
     }

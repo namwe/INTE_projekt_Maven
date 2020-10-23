@@ -153,8 +153,8 @@ class PlayerTest {
         p1.addToInventory(scroll);
         p1.putOn(sword);
         p1.putOn(scroll);
-        p1.dismantle(sword);
-        p1.dismantle(scroll);
+        p1.unequip(sword);
+        p1.unequip(scroll);
         assertFalse(sword.isEquipped());
         assertFalse(scroll.isEquipped());
     }
@@ -165,7 +165,7 @@ class PlayerTest {
         Equipment e1 = new Armor(new StatEquipment(2,2));
         p1.addToInventory(e1);
         p1.putOn(e1);
-        p1.dismantle(e1);
+        p1.unequip(e1);
         assertFalse(p1.getEquipmentWithSpecificStats(e1).isEquipped());
 
     }
