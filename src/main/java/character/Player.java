@@ -132,7 +132,7 @@ public class Player extends Movable implements Attackable {
     //*** En metod som kollar om det går att sätta på ett equipment ***//
     public void putOn(Equipment eq) {
 
-        //eq = getEquipmentWithSpecificStats(eq);
+        eq = getEquipmentWithSpecificStats(eq);
         checkBooleanOnEquipments(eq);
 
 
