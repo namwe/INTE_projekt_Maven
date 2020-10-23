@@ -64,6 +64,8 @@ public class Player implements Attackable {
             return;
         }
 
+
+
         String chooser = getChooserString(equipment);
 
         int count = getCounterForEquipments(chooser);
@@ -127,11 +129,12 @@ public class Player implements Attackable {
 
     //*** En metod som kollar om det går att sätta på ett equipment ***//
     public void putOn(Equipment eq) {
-        Equipment equipment = getEquipmentWithSpecificStats(eq);
+
+        eq = getEquipmentWithSpecificStats(eq);
         checkBooleanOnEquipments(eq);
 
 
-        equipment.setEquipped(true);
+        eq.setEquipped(true);
     }
 
     public void damage(Monster monster) {
