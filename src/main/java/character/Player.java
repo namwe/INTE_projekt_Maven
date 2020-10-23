@@ -1,17 +1,19 @@
 package character;
 
 import monster.Monster;
+import level.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player implements Attackable {
+public class Player extends Movable implements Attackable {
     private Stat playerStats;
     private int speed;
     private String name;
     private List<Equipment> equipments = new ArrayList<>();
 
-    public Player(String name) { // En spelar spawnar med ett svärd i sin inventory
+    public Player(String name, char charRepresentation, Position position, Map map) {
+        super(charRepresentation, position, map); // En spelar spawnar med ett svärd i sin inventory
         this.name = name;
         equipments.add(new Sword(new StatEquipment(10,0)));
         playerStats = new Stat(100,50);

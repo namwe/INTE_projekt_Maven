@@ -2,6 +2,7 @@ package character;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import level.*;
 import monster.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -12,9 +13,12 @@ class PlayerTest {
     //** ISE = IllegalStateException
     //** IAE = IllegalArgumentException
 
+    private Position position = new Position(0,0, 1,1);
+    private Map map = new Map(defaultRoomsMapOracle());
+
     @Test
     public void Player_Has_Default_Values_On_Sword_When_Spawned() {
-        Player p1 = new Player("Gladiator");
+        Player p1 = new Player("Gladiator", position, map);
         Equipment defComp = new Sword(new StatEquipment(10, 0));
         assertEquals(p1.getEquipmentWithSpecificStats(defComp).getStats().getCondition(), defComp.getStats().getCondition());
         assertEquals(p1.getEquipmentWithSpecificStats(defComp).getStats().getMana(), defComp.getStats().getMana());
@@ -274,8 +278,6 @@ class PlayerTest {
             p1.damage(new Ghost(20, Now.getInstance()));
         });
     }
-
-
 
 
 }
