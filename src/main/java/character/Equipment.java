@@ -35,6 +35,8 @@ public class Equipment implements Comparable<Equipment> {
         return stats.getMana();
     }
 
+
+
     public void combat(Monster monster, Equipment equipment) {
         if (equipment instanceof Sword) {
             stats.takeDmg(monster);
