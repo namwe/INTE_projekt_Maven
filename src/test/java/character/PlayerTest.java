@@ -28,7 +28,7 @@ class PlayerTest {
     @Test
     public void Throw_IAE_When_Name_Is_Null() {
         assertThrows(IllegalArgumentException.class, () -> {
-            Player p1 = new Player( null, playerChar, position, map);
+            new Player( null, playerChar, position, map);
         });
     }
 
@@ -81,7 +81,7 @@ class PlayerTest {
     @Test
     public void Throw_IAE_When_Player_Tries_To_Put_On_Equipment_That_Has_Not_Been_Added_To_Inventory() {
         Player player = new Player( "Gladiator", playerChar, position, map);
-        Equipment equipment = new Sword(new StatEquipment(10,5));
+        Equipment equipment = new Sword(new StatEquipment(4,9));
         assertThrows(IllegalArgumentException.class, () -> {
            player.putOn(equipment);
         });
