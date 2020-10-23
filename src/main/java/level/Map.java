@@ -5,6 +5,16 @@ public class Map {
     public static final int WIDTH = 2, HEIGHT = 2;
     private Room[][] rooms;
 
+    public Map(){
+        Room[][] rooms = new Room[Map.HEIGHT][Map.WIDTH];
+        for (int i = 0; i < rooms.length; i++) {
+            for (int j = 0; j < rooms[0].length; j++) {
+                rooms[i][j] = new Room(RoomType.DEFAULT_ROOM);
+            }
+        }
+        this.rooms = rooms;
+    }
+
     public Map(Room[][] rooms) {
         if (!dimensionsAreOk(rooms)) {
             throw new IllegalArgumentException();
