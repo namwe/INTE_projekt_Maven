@@ -16,6 +16,10 @@ public class uiMonster {
 		Frankenstein  f = Frankenstein.getInstance(); 
 		System.out.println(f);
 		
+		Ghost g = new Ghost(500,Now.getInstance()); 
+		System.out.println(g);
+		
+		
 		/*
 		f.hurtMonster();
 		System.out.println(f);

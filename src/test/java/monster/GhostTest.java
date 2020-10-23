@@ -63,13 +63,13 @@ class GhostTest {
 	@Test
 	void toStringReturnsAgeAndVisibleWhenMidnight() {
 		Ghost g = new Ghost(4999, new NowMockMidnightFalse());
-		assertEquals(g.toString(), "50 60 20 4999 invisible");
+		assertEquals(g.toString(), "GHOST 50 60 20 4999 invisible");
 	}
 
 	@Test
 	void toStringReturnsAgeAndInvisibleTestWhenNotMidnight() {
 		Ghost g = new Ghost(4999, new NowMockMidnightTrue());
-		assertEquals(g.toString(), "50 60 20 4999 visible");
+		assertEquals(g.toString(), "GHOST 50 60 20 4999 visible");
 	}
 
 	private class NowMockMidnightTrue extends Now {
