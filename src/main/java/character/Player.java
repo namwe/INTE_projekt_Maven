@@ -1,9 +1,6 @@
 package character;
 
-import monster.Frankenstein;
-import monster.Ghost;
 import monster.Monster;
-import monster.Vampire;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +20,7 @@ public class Player implements Attackable {
 
 
     public void dismantle(Equipment equipment) {
-        Equipment checkedEq = getSpecificEquipment(equipment);
+        Equipment checkedEq = getEquipmentWithSpecificStats(equipment);
         checkedEq.setEquipped(false);
     }
 
@@ -53,7 +50,7 @@ public class Player implements Attackable {
         equipments.add(equipment);
     }
 
-    public Equipment getSpecificEquipment(Equipment eq) {
+    public Equipment getEquipmentWithSpecificStats(Equipment eq) {
         for (Equipment equipment : equipments) {
             if (eq.getStats().getCondition() == equipment.getStats().getCondition() && eq.getStats().getMana() == equipment.getStats().getMana()) {
                 return equipment;
@@ -130,7 +127,7 @@ public class Player implements Attackable {
 
     //*** En metod som kollar om det går att sätta på ett equipment ***//
     public void putOn(Equipment eq) {
-        Equipment equipment = getSpecificEquipment(eq);
+        Equipment equipment = getEquipmentWithSpecificStats(eq);
         checkBooleanOnEquipments(eq);
 
 
