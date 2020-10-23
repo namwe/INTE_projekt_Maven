@@ -5,13 +5,16 @@ import character.Equipment;
 
 public class Vampire extends Monster {
 
-	private final static int MAXSTRENGTH = 90;
-	private final static int MINSTRENGTH = 5;
-	private final static int DEFAULTSPEED = 80;
-	private final static int DEFAULTAGRESSIVENESS = 50;
+	private static final int MAXSTRENGTH = 90;
+	private static final int MINSTRENGTH = 5;
+	private static final int DEFAULTSPEED = 80;
+	private static final int DEFAULTAGRESSIVENESS = 50;
+	
+	
+	
 
 	public Vampire(Now n) { // dependency injection
-		super((n.isNight()) ? MAXSTRENGTH : MINSTRENGTH, DEFAULTSPEED, DEFAULTAGRESSIVENESS);
+		super((n.isNight()) ? MAXSTRENGTH : MINSTRENGTH, DEFAULTSPEED, DEFAULTAGRESSIVENESS, TypeOfMonster.VAMPIRE);
 	}
 
 	public int getStrength(Now n) {

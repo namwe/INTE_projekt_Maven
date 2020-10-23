@@ -12,12 +12,14 @@ public abstract class Monster extends Movable  {
 	protected int strength;
 	protected int speed;
 	protected int aggressiveness;
+	protected TypeOfMonster monsterType;
 	
-	public Monster(int strength, int speed, int aggressiveness) {
+	public Monster(int strength, int speed, int aggressiveness, TypeOfMonster monster ) {
 		super('T', new Position(0,0, 1,1), new Map()); 
 		this.strength = strength;
 		this.speed = speed;
 		this.aggressiveness = aggressiveness;
+		this.monsterType = monster; 
 
 	}
 
@@ -35,11 +37,31 @@ public abstract class Monster extends Movable  {
 		return aggressiveness;
 	}
 
+	public TypeOfMonster getMonsterType() {
+		return monsterType; 
+	}
+	
+	
 	public String toString() {
-		String m;
-		if (this instanceof Ghost) 
-			m = "Ghost";
-		return strength + " " + speed + " " + aggressiveness;
+		TypeOfMonster m = this.getMonsterType();
+		String s; 
+	/*	switch (m){
+		   case VAMPIRE:
+			   s = "Vampire";
+		      break;
+		   
+		   case 2:
+		      // Operation / Flera operationer ... 
+		      break;
+		   case 3:
+		      // Operation / Flera operationer ... 
+			   break; 
+		   default:
+		      // Operation / Flera operationer ... 
+		      break;
+		}
+	*/
+		return this.getMonsterType() + " " + strength + " " + speed + " " + aggressiveness;
 	}
 
 }

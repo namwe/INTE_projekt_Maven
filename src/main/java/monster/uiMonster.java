@@ -5,11 +5,12 @@ public class uiMonster {
 	
 	public static void main (String[] args) {
 		
-		Ghost g = new Ghost(500,Now.getInstance()); 
+		//Ghost g = new Ghost(500,Now.getInstance()); 
 		
-		System.out.println(g); 
+ 
 		
-		 
+		 Vampire v = new Vampire(Now.getInstance()); 
+		 System.out.println(v); 
 		/*
 		
 		Frankenstein  f = Frankenstein.getInstance(); 
