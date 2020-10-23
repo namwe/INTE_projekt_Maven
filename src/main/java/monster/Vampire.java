@@ -24,11 +24,13 @@ public class Vampire extends Monster {
 	}
 
 	public void hurtMonster(Equipment equ) {
-		// "Här skadar endast trolleri Vampyren");
+		// "Endast trolleri skadar Vampyren");
 		if (equ instanceof Scroll) {
 			if (strength > 1)
 				strength = strength - 1;
 		}
 	}
 
+	
+	
 }

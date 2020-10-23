@@ -14,7 +14,6 @@ public abstract class Monster extends Movable  {
 	protected int aggressiveness;
 	
 	public Monster(int strength, int speed, int aggressiveness) {
-		//super('T', new Position(0,0, 1,1), new Map(new Room[2][2])); 
 		super('T', new Position(0,0, 1,1), new Map()); 
 		this.strength = strength;
 		this.speed = speed;
@@ -37,6 +36,9 @@ public abstract class Monster extends Movable  {
 	}
 
 	public String toString() {
+		String m;
+		if (this instanceof Ghost) 
+			m = "Ghost";
 		return strength + " " + speed + " " + aggressiveness;
 	}
 
