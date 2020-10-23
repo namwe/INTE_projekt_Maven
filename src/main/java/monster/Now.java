@@ -18,7 +18,7 @@ public class Now {
 		Calendar rightNow = Calendar.getInstance();
 		int hour = rightNow.get(Calendar.HOUR_OF_DAY);
 		if (hour < 5 || hour > 21) // "natt" mellan 5 på morgonen och 22 på kvällen
-			night = true;
+			this.night = true;
 		if (hour == 24) {
 			midnight = true;
 		}
