@@ -1,8 +1,6 @@
 package monster;
 
 import character.Equipment;
-import character.Stat;
-import character.StatEquipment;
 
 public abstract class Monster {
 
