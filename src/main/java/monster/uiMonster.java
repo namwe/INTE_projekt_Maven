@@ -1,5 +1,9 @@
 package monster;
 
+import character.Equipment;
+import character.Scroll;
+import character.StatEquipment;
+import character.Sword;
 
 public class uiMonster {
 	
@@ -11,7 +15,19 @@ public class uiMonster {
 		
 		 Vampire v = new Vampire(Now.getInstance()); 
 		 System.out.println(v); 
+		 StatEquipment statEqu = new StatEquipment(5, 5);
+		 Equipment scroll = new Scroll (statEqu);
 		
+		 StatEquipment statSword = new StatEquipment(5, 5);
+		Equipment sword = new Sword(statEqu);
+		 
+		Now n = Now.getInstance();
+		System.out.println(n.isNight()); 
+		v.hurtMonster(sword);
+		v.hurtMonster(scroll);
+		System.out.println(v);
+		v.hurtMonster(scroll);
+		System.out.println(v);
 		
 		Frankenstein  f = Frankenstein.getInstance(); 
 		System.out.println(f);

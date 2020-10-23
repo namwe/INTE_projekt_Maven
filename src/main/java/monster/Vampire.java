@@ -27,10 +27,15 @@ public class Vampire extends Monster {
 	}
 
 	public void hurtMonster(Equipment equ) {
-		// "Endast trolleri skadar Vampyren");
+		// "Endast trolleri skadar Vampyren, scroll med hög mana skadar mer");
 		if (equ instanceof Scroll) {
-			if (strength > 1)
-				strength = strength - 1;
+			if (equ.getStats().getMana()> 3) {
+				System.out.println(equ.getStats());
+				System.out.println(equ); 
+				if (strength > 1)
+					strength = strength - 2;
+				else {strength = strength - 1;}
+			}
 		}
 	}
 

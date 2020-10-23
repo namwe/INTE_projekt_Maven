@@ -49,7 +49,6 @@ class VampireTest {
 	void hurtMonsterTestDoesNothing() { /// ÄNDRA OM METODEN IMPLEMENTERAS.
 		Vampire v = new Vampire(new NowMockNightTrue());
 		v.hurtMonster(equ);
-		System.out.println(v.getStrength());
 		assertEquals(MAXSTRENGTH - 1, v.getStrength());
 
 	}
