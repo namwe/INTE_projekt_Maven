@@ -14,7 +14,7 @@ public class Player extends Movable implements Attackable {
 
     public Player(String name, char charRepresentation, Position position, Map map) {
         super(charRepresentation, position, map);
-        this.name = name;
+        if (name == null) { throw new IllegalArgumentException(); } else { this.name = name; }
         equipments.add(new Sword(new StatEquipment(10,0))); // En spelar spawnar med ett svärd i sin inventory
         playerStats = new Stat(100,50);
         speed = 1;

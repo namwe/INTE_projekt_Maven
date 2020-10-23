@@ -26,6 +26,13 @@ class PlayerTest {
     }
 
     @Test
+    public void Throw_IAE_When_Name_Is_Null() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Player p1 = new Player( null, playerChar, position, map);
+        });
+    }
+
+    @Test
     public void Player_Equips_Default_Sword_In_Inventory() {
         Player p1 = new Player( "Gladiator", playerChar, position, map);
         List<Equipment> equipments = p1.getEquipments();
