@@ -12,7 +12,7 @@ public class Frankenstein extends Monster {
 	private long lastAttackTimeStamp;
 
 	private Frankenstein() {
-		super(DEFAULTSTRENGTH, DEFAULTSPEED, DEFAULTAGRESSIVENESS);
+		super(DEFAULTSTRENGTH, DEFAULTSPEED, DEFAULTAGRESSIVENESS, TypeOfMonster.FRANKENSTEIN);
 	}
 
 	public static Frankenstein getInstance() {

@@ -11,10 +11,12 @@ public class uiMonster {
 		
 		 Vampire v = new Vampire(Now.getInstance()); 
 		 System.out.println(v); 
-		/*
+		
 		
 		Frankenstein  f = Frankenstein.getInstance(); 
 		System.out.println(f);
+		
+		/*
 		f.hurtMonster();
 		System.out.println(f);
 		f.hurtMonster();

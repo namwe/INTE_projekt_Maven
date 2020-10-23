@@ -15,7 +15,7 @@ public class Ghost extends Monster {
 	private final static int DEFAULTAGRESSIVENESS = 20;
 
 	public Ghost(int age, Now n) {
-		super((age >= THRESHOLDAGE) ? MAXSTRENGTH : MINSTRENGTH, DEFAULTSPEED, DEFAULTAGRESSIVENESS);
+		super((age >= THRESHOLDAGE) ? MAXSTRENGTH : MINSTRENGTH, DEFAULTSPEED, DEFAULTAGRESSIVENESS, TypeOfMonster.GHOST);
 		this.age = age;
 		if (n.isMidnight())
 			this.invisible = false;
