@@ -21,7 +21,8 @@ class PlayerTest {
     public void Player_Has_Default_Values_On_Sword_When_Spawned() {
         Player p1 = new Player( "Gladiator", playerChar, position, map);
         Equipment defComp = new Sword(new StatEquipment(10, 0));
-
+        assertEquals(defComp.getStats().getCondition(), p1.getEquipments().get(0).getStats().getCondition());
+        assertEquals(defComp.getStats().getMana(), p1.getEquipments().get(0).getStats().getMana());
     }
 
     @Test
@@ -124,6 +125,34 @@ class PlayerTest {
         p1.putOn(sword2);
         assertTrue(sword.isEquipped());
         assertTrue(sword2.isEquipped());
+    }
+
+    @Test
+    public void Player_Equips_Two_Swords_With_Same_Stats_Then_Un_Equips_First_One() {
+        Player p1 = new Player( "Gladiator", playerChar, position, map);
+        Equipment sword = new Sword(new StatEquipment(5,5));
+        Equipment sword2 = new Sword(new StatEquipment(5,5));
+        p1.addToInventory(sword);
+        p1.addToInventory(sword2);
+        p1.putOn(sword);
+        p1.putOn(sword2);
+        p1.unEquip(sword);
+        assertFalse(sword.isEquipped());
+        assertTrue(sword2.isEquipped());
+    }
+
+    @Test
+    public void Player_Equips_Two_Swords_With_Same_Stats_Then_Un_Equips_Second_One() {
+        Player p1 = new Player( "Gladiator", playerChar, position, map);
+        Equipment sword = new Sword(new StatEquipment(5,5));
+        Equipment sword2 = new Sword(new StatEquipment(5,5));
+        p1.addToInventory(sword);
+        p1.addToInventory(sword2);
+        p1.putOn(sword);
+        p1.putOn(sword2);
+        p1.unEquip(sword2);
+        assertTrue(sword.isEquipped());
+        assertFalse(sword2.isEquipped());
     }
 
     @Test
