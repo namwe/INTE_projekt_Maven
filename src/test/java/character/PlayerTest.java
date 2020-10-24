@@ -116,7 +116,15 @@ class PlayerTest {
 
     @Test
     public void Player_Equips_Two_Swords_With_Same_Stats() {
-
+        Player p1 = new Player( "Gladiator", playerChar, position, map);
+        Equipment sword = new Sword(new StatEquipment(5,5));
+        Equipment sword2 = new Sword(new StatEquipment(5,5));
+        p1.addToInventory(sword);
+        p1.addToInventory(sword2);
+        p1.putOn(sword);
+        p1.putOn(sword2);
+        assertTrue(sword.isEquipped());
+        assertTrue(sword2.isEquipped());  //Fixa Comparator alternativt ändra krav till att de equippade måste vara olika
     }
 
     @Test
