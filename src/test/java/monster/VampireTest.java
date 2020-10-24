@@ -13,7 +13,7 @@ class VampireTest {
 	private final static int MAXSTRENGTH = 90;
 	private final static int MINSTRENGTH = 5;
 	StatEquipment statEqu = new StatEquipment(5, 5);
-	Equipment equ = new Scroll(statEqu);
+	Equipment scroll = new Scroll(statEqu);
 
 	@Test
 	void VampireConstructorSetsValuesCorrectWhenNightTest() {
@@ -21,35 +21,26 @@ class VampireTest {
 		assertEquals(MAXSTRENGTH, v.getStrength());
 		assertEquals(80, v.getSpeed());
 		assertEquals(50, v.getAggressiveness());
+		assertEquals(TypeOfMonster.VAMPIRE, v.getMonsterType());
 	}
 
 	@Test
-	void VampireConstructorSetsValuesCorrectWhenDayTest() {
+	void VampireConstructorSetsCorrectWhenDayTest() {
 		Vampire v = new Vampire(new NowMockNightFalse());
 		assertEquals(MINSTRENGTH, v.getStrength());
-		assertEquals(80, v.getSpeed());
-		assertEquals(50, v.getAggressiveness());
+		assertEquals(5, v.getSpeed());
+		assertEquals(5, v.getAggressiveness());
 	}
 
-	@Test
-	void getStrengthReturnsMINSTRENGTHWhenDayTest() {
-		Vampire v = new Vampire(new NowMockNightFalse());
-		v.getStrength(new NowMockNightFalse());
-		assertEquals(MINSTRENGTH, v.getStrength());
-	}
 
-	@Test
-	void getStrengthReturnsMINSTRENGTHWhenNightTest() {
+	@Test  ///testa alla varianter av denna metod 
+	void hurtMonsterWithScrollManaOver3DecreasesStrengthBy2() { /// ÄNDRA OM METODEN IMPLEMENTERAS.
 		Vampire v = new Vampire(new NowMockNightTrue());
-		v.getStrength(new NowMockNightTrue());
-		assertEquals(MAXSTRENGTH, v.getStrength());
-	}
-
-	@Test
-	void hurtMonsterTestDoesNothing() { /// ÄNDRA OM METODEN IMPLEMENTERAS.
-		Vampire v = new Vampire(new NowMockNightTrue());
-		v.hurtMonster(equ);
-		assertEquals(MAXSTRENGTH - 1, v.getStrength());
+		v.hurtMonster(scroll);
+		System.out.println(v);
+		System.out.println(v.getStrength());
+		System.out.println(scroll.getStats()); 
+		assertEquals(MAXSTRENGTH-2, v.getStrength());
 
 	}
 
