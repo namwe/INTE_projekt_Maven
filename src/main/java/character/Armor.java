@@ -7,4 +7,6 @@ public class Armor extends Equipment {
         super(stats);
     }
 
+
+
 }
