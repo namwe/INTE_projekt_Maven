@@ -110,6 +110,13 @@ class PlayerTest {
         p1.addToInventory(sword2);
         p1.putOn(sword);
         p1.putOn(sword2);
+        assertTrue(sword.isEquipped());
+        assertTrue(sword2.isEquipped());
+    }
+
+    @Test
+    public void Player_Equips_Two_Swords_With_Same_Stats() {
+
     }
 
     @Test
