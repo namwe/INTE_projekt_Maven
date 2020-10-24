@@ -7,20 +7,20 @@ class StatEquipmentTest {
     @Test
     public void Throw_IAE_When_Stats_Are_Negative() {
         assertThrows(IllegalArgumentException.class, () -> {
-            StatEquipment statEquipment = new StatEquipment(-1,10);
+            new StatEquipment(-1,10);
         });
         assertThrows(IllegalArgumentException.class, () -> {
-            StatEquipment statEquipment1 = new StatEquipment(5,-5);
+            new StatEquipment(5,-5);
         });
     }
 
     @Test
     public void Throw_IAE_When_Stats_Are_Higher_Than_Ten() {
         assertThrows(IllegalArgumentException.class, () -> {
-            StatEquipment statEquipment = new StatEquipment(4,11);
+            new StatEquipment(4,11);
         });
         assertThrows(IllegalArgumentException.class, () -> {
-            StatEquipment statEquipment1 = new StatEquipment(15,-2);
+            new StatEquipment(15,-2);
         });
     }
 
@@ -35,6 +35,7 @@ class StatEquipmentTest {
         StatEquipment statEquipment = new StatEquipment(2,3);
         assertEquals(statEquipment.getMana(), 3);
     }
+
 
     @Test
     public void toStringTest() {
