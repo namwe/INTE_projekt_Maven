@@ -54,7 +54,11 @@ public class Player extends Movable implements Attackable {
 
     public Equipment getEquipmentWithSpecificStats(Equipment eq) {
         for (Equipment equipment : equipments) {
-            if (eq.getStats().getCondition() == equipment.getStats().getCondition() && eq.getStats().getMana() == equipment.getStats().getMana()) {
+            /*if (eq.getStats().getCondition() == equipment.getStats().getCondition() && eq.getStats().getMana() == equipment.getStats().getMana()) {
+                return equipment;
+
+             */
+            if (eq.equals(equipment)) {
                 return equipment;
             }
         }

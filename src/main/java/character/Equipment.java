@@ -36,7 +36,6 @@ public class Equipment implements Comparable<Equipment> {
     }
 
 
-
     public void combat(Monster monster, Equipment equipment) {
         if (equipment instanceof Sword) {
             stats.takeDmg(monster);
@@ -51,4 +50,6 @@ public class Equipment implements Comparable<Equipment> {
                 thenComparingInt(Equipment::getStatsMana).
                 thenComparing(Equipment::isEquipped).compare(this, o);
     }
+
+
 }
