@@ -70,19 +70,13 @@ public class Player extends Movable implements Attackable {
             return;
         }
 
-        Enum eqType = Enum.DEFAULT;
+        EquipmentEnum eqType = EquipmentEnum.DEFAULT;
         eqType = eqType.getType(equipment);
-        System.out.println(eqType + "enumtyps int = " + eqType.getCountEquipped());
-        int count = eqType.getCounter(equipments, eqType);
 
-       // String chooser = getChooserString(equipment);
-
-       // int count = getCounterForEquipments(chooser);
-
-        System.out.println(count);
+        int count = getCounterForEquipments(eqType);
 
 
-        if (eqType == Enum.SWORD) {
+        if (eqType == EquipmentEnum.SWORD) {
             if (count >= 2) {
                 throw new IllegalStateException();
             }
@@ -96,25 +90,25 @@ public class Player extends Movable implements Attackable {
 
     }
 
-    private int getCounterForEquipments(String chooser) {
+    private int getCounterForEquipments(EquipmentEnum equipmentEnum) {
         int count = 0;
         for (Equipment loopEq : equipments) {
-            switch (chooser) {
-                case "armor":
+            switch (equipmentEnum) {
+                case ARMOR:
                     if (loopEq instanceof Armor) {
                         if (loopEq.isEquipped()) {
                             count++;
                         }
                     }
                     break;
-                case "scroll":
+                case SCROLL:
                     if (loopEq instanceof Scroll) {
                         if (loopEq.isEquipped()) {
                             count++;
                         }
                     }
                     break;
-                case "sword":
+                case SWORD:
                     if (loopEq instanceof Sword) {
                         if (loopEq.isEquipped()) {
                             count++;
@@ -126,17 +120,6 @@ public class Player extends Movable implements Attackable {
         return count;
     }
 
-    private String getChooserString(Equipment equipment) {
-        String chooser = "";
-        if (equipment instanceof Armor) {
-            chooser = "armor";
-        } else if (equipment instanceof Scroll) {
-            chooser = "scroll";
-        } else if (equipment instanceof Sword) {
-            chooser = "sword";
-        }
-        return chooser;
-    }
 
     //*** En metod som kollar om det går att sätta på ett equipment och om det stämmer sätter då på det ***//
     public void putOn(Equipment eq) {
