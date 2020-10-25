@@ -231,8 +231,8 @@ class PlayerTest {
         Equipment sword = new Sword(new StatEquipment(5, 8));
         p1.addToInventory(sword);
         p1.putOn(sword);
-        p1.damage(Frankenstein.getInstance());
-        assertEquals(80, p1.getPlayerStats().getHp());
+        p1.damage(new Ghost(21, Now.getInstance()));
+        assertEquals(90, p1.getPlayerStats().getHp());
     }
 
     @Test
@@ -241,8 +241,8 @@ class PlayerTest {
         Equipment sword = new Scroll(new StatEquipment(5, 8));
         p1.addToInventory(sword);
         p1.putOn(sword);
-        p1.damage(Frankenstein.getInstance());
-        assertEquals(80, p1.getPlayerStats().getHp());
+        p1.damage(new Vampire(Now.getInstance()));
+        assertEquals(70, p1.getPlayerStats().getHp());
     }
 
     @Test
