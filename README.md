@@ -1,1 +1,1 @@
-# INTE_projekt_Maven
+# Projekt för INTE HT2020
