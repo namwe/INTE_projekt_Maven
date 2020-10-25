@@ -70,7 +70,8 @@ public class Player extends Movable implements Attackable {
             return;
         }
 
-
+        Enum eqType = Enum.DEFAULT;
+        eqType = eqType.getType(equipment);
 
         String chooser = getChooserString(equipment);
 
@@ -133,7 +134,7 @@ public class Player extends Movable implements Attackable {
         return chooser;
     }
 
-    //*** En metod som kollar om det går att sätta på ett equipment ***//
+    //*** En metod som kollar om det går att sätta på ett equipment och om det stämmer sätter då på det ***//
     public void putOn(Equipment eq) {
 
         eq = getEquipmentWithSpecificStats(eq);

@@ -1,16 +1,25 @@
 package character;
 
 public enum Enum {
-    SWORD("sword"),
-    DEFAULT("default");
+    SWORD, ARMOR, SCROLL, DEFAULT;
 
-    private final String type;
+    private int countEquipped;
 
-    Enum(String type) {
-        this.type = type;
+    Enum() {
+        countEquipped = 0;
     }
 
-    public String getType() {
-        return type;
+
+    public Enum getType(Equipment equipment) {
+        if (equipment instanceof Armor) {
+            return ARMOR;
+        } else if (equipment instanceof Sword) {
+            return SWORD;
+        } else if (equipment instanceof Scroll) {
+            return SCROLL;
+        }
+
+        return DEFAULT;
     }
+
 }
