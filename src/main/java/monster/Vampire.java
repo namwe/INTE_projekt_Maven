@@ -56,11 +56,12 @@ public class Vampire extends Monster {
 					strength = 0;
 				break;
 
-			default: // Hur testa denna? Mocka ett (illegal) objekt med mana 11 tex eller överflödigt?
+			default: // Hur testa denna? Mocka ett (illegal) objekt med mana 11 tex eller
+						// överflödigt - lita på att klassen har egna test?
 				throw new IllegalArgumentException();
 			}
-		}
-		else throw new IllegalEquipmentException(equ, this);
+		} else
+			throw new IllegalEquipmentException(equ, this);
 
 	}
 

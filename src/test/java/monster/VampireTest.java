@@ -111,8 +111,6 @@ class VampireTest {
 			});
 	}
 	
-	
-
 
 	private class NowMockNightFalse extends Now {
 		private NowMockNightFalse() {
