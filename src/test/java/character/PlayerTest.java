@@ -257,7 +257,7 @@ class PlayerTest {
     }
 
     @Test
-    void Player_Attacking_Ghost_With_Sword_Decreases_Condition_With_One() {
+    void Player_Attacking_Ghost_With_Sword_Decreases_Condition_By_One() {
         Player p1 = new Player( "Gladiator", playerChar, position, map);
         Equipment sword = new Sword(new StatEquipment(3, 4));
         p1.addToInventory(sword);
@@ -267,7 +267,7 @@ class PlayerTest {
     }
 
     @Test
-    void Player_Attacking_Frankenstein_With_Sword_Decreases_Condition_With_Two() {
+    void Player_Attacking_Frankenstein_With_Sword_Decreases_Condition_By_Two() {
         Player p1 = new Player( "Gladiator", playerChar, position, map);
         Equipment sword = new Sword(new StatEquipment(6, 4));
         p1.addToInventory(sword);
@@ -277,7 +277,7 @@ class PlayerTest {
     }
 
     @Test
-    void Player_Attacking_Vampire_With_Sword_Decreases_Condition_With_Three() {
+    void Player_Attacking_Vampire_With_Sword_Decreases_Condition_By_Three() {
         Player p1 = new Player( "Gladiator", playerChar, position, map);
         Equipment sword = new Sword(new StatEquipment(9, 4));
         p1.addToInventory(sword);
