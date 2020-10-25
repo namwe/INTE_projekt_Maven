@@ -215,14 +215,14 @@ class PlayerTest {
         });
     }
 
-    @Disabled
-    void Player_Attacking_Frankenstein_With_Sword_Results_In_Thirty_Less_Hp() {
+    @Test
+    void Player_Attacking_Frankenstein_With_Equipment_Equipped_Results_In_Twenty_Less_Hp() {
         Player p1 = new Player( "Gladiator", playerChar, position, map);
         Equipment sword = new Sword(new StatEquipment(5, 8));
         p1.addToInventory(sword);
         p1.putOn(sword);
         p1.damage(Frankenstein.getInstance());
-       // assertEquals(70, p1.getPlayerStats().getHp());
+        assertEquals(80, p1.getPlayerStats().getHp());
 
     }
 

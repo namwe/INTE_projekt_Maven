@@ -48,6 +48,10 @@ public class Player extends Movable implements Attackable {
         return equipments.size();
     }
 
+    public Stat getPlayerStats() {
+        return playerStats;
+    }
+
     public void addToInventory(Equipment equipment) {
         equipments.add(equipment);
     }
