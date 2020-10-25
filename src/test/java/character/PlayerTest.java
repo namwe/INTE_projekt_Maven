@@ -327,6 +327,11 @@ class PlayerTest {
     }
 
     @Test
+    void Throw_ISE_If_Player_Is_Attacking_Monster_That_Will_Results_In_Negative_Hp() {
+
+    }
+
+    @Test
     void Player_Attacking_With_Equipment_Equipped_That_Is_Not_Sword_Or_Scroll_Results_In_ISE() {
         Player p1 = new Player( "Gladiator", playerChar, position, map);
         Equipment armor = new Armor(new StatEquipment(2, 8));
