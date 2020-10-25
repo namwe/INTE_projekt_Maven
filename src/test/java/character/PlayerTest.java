@@ -339,6 +339,7 @@ class PlayerTest {
         });
     }
 
+
     @Test
     void Player_Attacking_With_Equipment_Equipped_That_Is_Not_Sword_Or_Scroll_Results_In_ISE() {
         Player p1 = new Player( "Gladiator", playerChar, position, map);

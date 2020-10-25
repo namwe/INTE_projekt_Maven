@@ -65,7 +65,7 @@ public class Player extends Movable implements Attackable {
         throw new IllegalArgumentException();
     }
 
-    private void checkBooleanOnEquipments(Equipment equipment) {
+    private void checkHowManyEquipmentsAreEquipped(Equipment equipment) {
         if (equipments.size() <= 1) {
             return;
         }
@@ -74,7 +74,6 @@ public class Player extends Movable implements Attackable {
         eqType = eqType.getType(equipment);
 
         int count = getCounterForEquipments(eqType);
-
 
         if (eqType == EquipmentEnum.SWORD) {
             if (count >= 2) {
@@ -85,9 +84,6 @@ public class Player extends Movable implements Attackable {
                 throw new IllegalStateException();
             }
         }
-
-
-
     }
 
     private int getCounterForEquipments(EquipmentEnum equipmentEnum) {
@@ -125,7 +121,7 @@ public class Player extends Movable implements Attackable {
     public void putOn(Equipment eq) {
 
         eq = getEquipmentWithSpecificStats(eq);
-        checkBooleanOnEquipments(eq);
+        checkHowManyEquipmentsAreEquipped(eq);
 
 
         eq.setEquipped(true);
