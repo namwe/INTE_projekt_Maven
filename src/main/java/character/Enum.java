@@ -11,6 +11,10 @@ public enum Enum {
         countEquipped = 0;
     }
 
+    public int getCountEquipped() {
+        return countEquipped;
+    }
+
 
     public Enum getType(Equipment equipment) {
         if (equipment instanceof Armor) {
@@ -19,9 +23,10 @@ public enum Enum {
             return SWORD;
         } else if (equipment instanceof Scroll) {
             return SCROLL;
+        } else {
+            return DEFAULT;
         }
 
-        return DEFAULT;
     }
 
     public int getCounter(List<Equipment> equipmentList, Enum e) {

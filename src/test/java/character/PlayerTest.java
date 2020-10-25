@@ -249,9 +249,9 @@ class PlayerTest {
     @Test
     void Player_Attacking_Vampire_With_Equipment_Equipped_Results_In_Thirty_Less_Hp() {
         Player p1 = new Player( "Gladiator", playerChar, position, map);
-        Equipment sword = new Scroll(new StatEquipment(5, 8));
-        p1.addToInventory(sword);
-        p1.putOn(sword);
+        Equipment scroll = new Scroll(new StatEquipment(5, 8));
+        p1.addToInventory(scroll);
+        p1.putOn(scroll);
         p1.damage(new Vampire(Now.getInstance()));
         assertEquals(70, p1.getPlayerStats().getHp());
     }

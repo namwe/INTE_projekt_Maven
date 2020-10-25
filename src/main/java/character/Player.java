@@ -72,14 +72,17 @@ public class Player extends Movable implements Attackable {
 
         Enum eqType = Enum.DEFAULT;
         eqType = eqType.getType(equipment);
-        eqType = eqType.getCounter(equipments, eqType);
+        System.out.println(eqType + "enumtyps int = " + eqType.getCountEquipped());
+        int count = eqType.getCounter(equipments, eqType);
 
        // String chooser = getChooserString(equipment);
 
-        int count = getCounterForEquipments(chooser);
+       // int count = getCounterForEquipments(chooser);
+
+        System.out.println(count);
 
 
-        if (chooser.equals("sword")) {
+        if (eqType == Enum.SWORD) {
             if (count >= 2) {
                 throw new IllegalStateException();
             }
