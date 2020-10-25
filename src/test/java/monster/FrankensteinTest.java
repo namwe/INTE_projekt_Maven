@@ -10,6 +10,7 @@ import character.Scroll;
 import character.StatEquipment;
 import character.Sword;
 
+
 //100% coverage men måste nog hitta ett sätt att sätta insatnsen till null efter varje test. 
 //Nu alternativet att återställa instansvariabeln strength till ursprunget @AfterEach
 
@@ -58,7 +59,17 @@ class FrankensteinTest {
 		assertEquals(0, f.getAggressiveness());
 	}
 
-	// Göra detta med mockobjekt genom privata metoderna?
+	
+	@Test
+	void hurtMonsterEquimpmentNotInstanceOfScrollThrowsExceptionTest() {
+		Frankenstein f = Frankenstein.getInstance();
+		StatEquipment statEqu = new StatEquipment(0, 10);		
+		assertThrows(IllegalEquipmentException.class, () -> {
+			Equipment scroll = new Scroll(statEqu);	
+			f.hurtMonster(scroll);
+			});
+	}
+	
 
 	@Test
 	void recoverAfter15SecIncreasesStrengthBy5DecreasesAggBy5Test() {

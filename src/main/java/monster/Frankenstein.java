@@ -45,6 +45,8 @@ public class Frankenstein extends Monster {
 			long attackTimeStamp = System.currentTimeMillis();
 			recover(attackTimeStamp);
 		}
+		else
+			throw new IllegalEquipmentException(equ, this);
 	}
 
 	private void recover(long attackTimeStamp) {

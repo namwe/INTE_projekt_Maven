@@ -15,27 +15,36 @@ public class uiMonster {
 		
 		 Vampire v = new Vampire(Now.getInstance()); 
 		 System.out.println(v); 
-		 StatEquipment statEqu = new StatEquipment(5, 5);
-		 Equipment scroll = new Scroll (statEqu);
+		 //StatEquipment statEqu = new StatEquipment(5, 5);
+		// Equipment scroll = new Scroll (statEqu);
 		
-		 StatEquipment statSword = new StatEquipment(5, 5);
-		Equipment sword = new Sword(statEqu);
+		//StatEquipment statSword = new StatEquipment(5, 5);
+		//Equipment sword = new Sword(statEqu);
 		 
+		StatEquipment statEqu = new StatEquipment(0, 10);
+		Equipment scroll = new Scroll(statEqu);
+		Equipment sword = new Sword(statEqu);
+		Ghost g = new Ghost(4999,Now.getInstance()); 
+		System.out.println(g);
+		g.hurtMonster(scroll);
+		
 		Now n = Now.getInstance();
 		System.out.println(n.isNight()); 
-		v.hurtMonster(sword);
+		//v.hurtMonster(sword);
 		v.hurtMonster(scroll);
 		System.out.println(v);
-		v.hurtMonster(scroll);
+		//v.hurtMonster(sword);
 		System.out.println(v);
 		
 		Frankenstein  f = Frankenstein.getInstance(); 
 		System.out.println(f);
-		
-		Ghost g = new Ghost(500,Now.getInstance()); 
+		f.hurtMonster(sword);
+		/*
+		Ghost g = new Ghost(4999,Now.getInstance()); 
 		System.out.println(g);
-		
-		
+		g.hurtMonster(sword);
+		System.out.println(g);
+		*/
 		/*
 		f.hurtMonster();
 		System.out.println(f);

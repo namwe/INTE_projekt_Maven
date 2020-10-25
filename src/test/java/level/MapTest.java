@@ -55,6 +55,39 @@ class MapTest {
         assertEquals(Air.getInstance(), m.getTile(p));
     }
 
+    @Test
+    void emptyConstructorGeneratesMap(){
+        Map m0 = new Map();
+        Map m1 = new Map(defaultRoomsMapOracle());
+        assertTrue(m0.equals(m1));
+
+    }
+
+    @Test
+    void toStringTest(){
+        String expected =
+                "# # # # # # # # # # # # # # # # # # \n" +
+                "#               # #               # \n" +
+                "#               # #               # \n" +
+                "#               # #               # \n" +
+                "#               # #               # \n" +
+                "#               # #               # \n" +
+                "#               # #               # \n" +
+                "#               # #               # \n" +
+                "# # # # # # # # # # # # # # # # # # \n" +
+                "# # # # # # # # # # # # # # # # # # \n" +
+                "#               # #               # \n" +
+                "#               # #               # \n" +
+                "#               # #               # \n" +
+                "#               # #               # \n" +
+                "#               # #               # \n" +
+                "#               # #               # \n" +
+                "#               # #               # \n" +
+                "# # # # # # # # # # # # # # # # # # \n" ;
+        Map m = new Map();
+        assertEquals(expected, m.toString());
+    }
+
     private Room[][] defaultRoomsMapOracle(){
         Room[][] rooms = new Room[Map.HEIGHT][Map.WIDTH];
         for (int i = 0; i < rooms.length; i++) {

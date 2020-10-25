@@ -13,40 +13,56 @@ public class Vampire extends Monster {
 	private static final int DAYAGRESSIVENESS = 5;
 
 	public Vampire(Now n) { // dependency injection
-		super((n.isNight()) ? MAXSTRENGTH : MINSTRENGTH,(n.isNight()) ? NIGHTSPEED : DAYSPEED, (n.isNight()) ? NIGHTAGRESSIVENESS : DAYAGRESSIVENESS, TypeOfMonster.VAMPIRE);
+		super((n.isNight()) ? MAXSTRENGTH : MINSTRENGTH, (n.isNight()) ? NIGHTSPEED : DAYSPEED,
+				(n.isNight()) ? NIGHTAGRESSIVENESS : DAYAGRESSIVENESS, TypeOfMonster.VAMPIRE);
 	}
 
 	public int getStrength() {
 		return strength;
 	}
-	
-	
-	public void sendToCoffin(Now n) { ///obs testa 
-		if (!n.isNight());
-		aggressiveness = DAYAGRESSIVENESS; 
-		speed = DAYSPEED; 
-		strength = MINSTRENGTH;	
-	}
-	
-	public void bringOutOfCoffin(Now n) { ///obs testa 
-		if (n.isNight());
-		aggressiveness = NIGHTAGRESSIVENESS; 
-		speed = NIGHTSPEED; 
-		strength = MAXSTRENGTH;	
-	}
-	
-	
+
 	public void hurtMonster(Equipment equ) {
 		// "Endast trolleri skadar Vampyren, scroll med hög mana skadar mer");
+		// Om styrka skulle bli 0 sätt allt till 0 (kill monster)
 		if (equ instanceof Scroll) {
-			if (equ.getStats().getMana()> 3) {
-				if (strength > 2)
-					strength = strength - 2;
-				else {strength = strength - 1;}
+			int mana = equ.getStats().getMana();
+			switch (mana) {
+			case 0:
+				aggressiveness = aggressiveness + 5;
+				break;
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+				if (strength > 1) {
+					strength = strength - 1;
+					aggressiveness = aggressiveness + 5;
+				} else {
+					aggressiveness = aggressiveness + 5;
+				}
+				break;
+			case 6:
+			case 7:
+			case 8:
+			case 9:
+			case 10:
+				if (strength >= 5) {
+					strength = strength - 5;
+					aggressiveness = aggressiveness + 5;
+					if (speed > 2)
+						speed = speed - 2;
+				} else
+					strength = 0;
+				break;
+
+			default: // Hur testa denna? Mocka ett (illegal) objekt med mana 11 tex eller
+						// överflödigt - lita på att klassen har egna test?
+				throw new IllegalArgumentException();
 			}
-		}
+		} else
+			throw new IllegalEquipmentException(equ, this);
+
 	}
 
-	
-	
 }

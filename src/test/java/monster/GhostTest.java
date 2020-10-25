@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import character.Equipment;
 import character.Scroll;
 import character.StatEquipment;
+import character.Sword;
 
 class GhostTest {
 
@@ -46,20 +47,69 @@ class GhostTest {
 	}
 
 	@Test
-	void hurtMonsterDecreasesStrengthBy20PercentTest() {
-		Ghost g = new Ghost(4999, Now.getInstance());
-		g.hurtMonster(equ);
-		assertEquals(40, g.getStrength());
+	void hurtMonsterDecreasesStrengthBy10PercentMana1To5Test() {
+		Ghost g = new Ghost(5000, Now.getInstance());
+		StatEquipment statEqu = new StatEquipment(0, 4);
+		Equipment scroll = new Scroll(statEqu);
+		g.hurtMonster(scroll);
+		assertEquals(63, g.getStrength());
 	}
+	
+	@Test
+	void hurtMonsterDecreasesStrengthBy20PercentTestMana6To10() {
+		Ghost g = new Ghost(5000, Now.getInstance());
+		StatEquipment statEqu = new StatEquipment(0, 10);
+		Equipment scroll = new Scroll(statEqu);
+		g.hurtMonster(scroll);
+		assertEquals(56, g.getStrength());
+	}
+	
+	@Test
+	void hurtMonsterStrengthBy25orLessSetsStrengthTo25() {
+		Ghost g = new Ghost(5000, Now.getInstance());
+		StatEquipment statEqu = new StatEquipment(0, 10);
+		Equipment scroll = new Scroll(statEqu);
+		g.strength = 25;
+		g.hurtMonster(scroll);
+		assertEquals(25, g.getStrength());
+	}
+	
+	
+	
+	@Test
+	void hurtMonsterEquimpmentNotInstanceOfScrollThrowsExceptionTest() {
+		Ghost g = new Ghost(5000, Now.getInstance());
+		StatEquipment statEqu = new StatEquipment(0, 10);		
+		assertThrows(IllegalEquipmentException.class, () -> {
+			Equipment sword = new Sword(statEqu);	
+			g.hurtMonster(sword);
+			});
+	}
+	
+	
+	@Test
+	void hurtMonsterMana0IncreasesAggressivenessBy1Test() {
+		Ghost g = new Ghost(5000, Now.getInstance());
+		StatEquipment statEqu = new StatEquipment(0, 0);
+		Equipment scroll = new Scroll(statEqu);
+		g.hurtMonster(scroll);
+		assertEquals(21, g.getAggressiveness());
+	}
+	
+	
 
 	@Test
 	void hurtMonsterNoDecreaseOfStrengthIfStrengtLessThan26Test() {
 		Ghost g = new Ghost(4999, Now.getInstance());
 		g.strength = 25;
-		g.hurtMonster(equ);
+		StatEquipment statEqu = new StatEquipment(5, 5);
+		Equipment scroll = new Scroll(statEqu);
+		g.hurtMonster(scroll);
 		assertEquals(25, g.getStrength());
 	}
 
+	
+	
 	@Test
 	void toStringReturnsAgeAndVisibleWhenMidnight() {
 		Ghost g = new Ghost(4999, new NowMockMidnightFalse());
