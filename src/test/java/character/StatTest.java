@@ -10,14 +10,14 @@ class StatTest {
     @Test
     public void Throw_IAE_When_Hp_Set_To_Negative_Number() {
         assertThrows(IllegalArgumentException.class, () -> {
-            Stat stat = new Stat(-1,100);
+            new Stat(-1,100);
         });
     }
 
     @Test
     public void Throw_IAE_When_Mana_Set_To_Higher_Than_One_Hundred() {
         assertThrows(IllegalArgumentException.class, () -> {
-            Stat stat = new Stat(5,120);
+            new Stat(5,120);
         });
     }
 
