@@ -84,4 +84,10 @@ class RoomTest {
         assertEquals(defaultRoomString, r.toString());
     }
 
+    @Test
+    void rowToString() {
+        Room r = new Room(RoomType.DEFAULT_ROOM);
+        assertEquals("# # # # # # # # # ", r.rowToString(0));
+
+    }
 }
