@@ -1,5 +1,7 @@
 package character;
 
+import java.util.List;
+
 public enum Enum {
     SWORD, ARMOR, SCROLL, DEFAULT;
 
@@ -20,6 +22,29 @@ public enum Enum {
         }
 
         return DEFAULT;
+    }
+
+    public int getCounter(List<Equipment> equipmentList, Enum e) {
+        for (Equipment eq : equipmentList) {
+            switch (e) {
+                case ARMOR:
+                    if (eq.isEquipped()) {
+                        countEquipped++;
+                        break;
+                    }
+                case SWORD:
+                    if (eq.isEquipped()) {
+                        countEquipped++;
+                        break;
+                    }
+                case SCROLL:
+                    if (eq.isEquipped()) {
+                        countEquipped++;
+                        break;
+                    }
+            }
+        }
+        return countEquipped;
     }
 
 }

@@ -72,8 +72,9 @@ public class Player extends Movable implements Attackable {
 
         Enum eqType = Enum.DEFAULT;
         eqType = eqType.getType(equipment);
+        eqType = eqType.getCounter(equipments, eqType);
 
-        String chooser = getChooserString(equipment);
+       // String chooser = getChooserString(equipment);
 
         int count = getCounterForEquipments(chooser);
 
