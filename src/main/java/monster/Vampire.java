@@ -60,6 +60,7 @@ public class Vampire extends Monster {
 				throw new IllegalArgumentException();
 			}
 		}
+		else throw new IllegalEquipmentException(equ, this);
 
 	}
 

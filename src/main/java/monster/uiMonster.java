@@ -33,7 +33,7 @@ public class uiMonster {
 		//v.hurtMonster(sword);
 		v.hurtMonster(scroll);
 		System.out.println(v);
-		v.hurtMonster(scroll);
+		v.hurtMonster(sword);
 		System.out.println(v);
 		
 		Frankenstein  f = Frankenstein.getInstance(); 
