@@ -22,6 +22,11 @@ public class Stat {
         }
     }
 
+    // Ska bara användas för att testas!!!
+    protected void setHp(int hp) {
+        this.hp = hp;
+    }
+
     public int getHp() {
         return hp;
     }
@@ -38,7 +43,11 @@ public class Stat {
         } else if (monster instanceof Vampire) {
             hp = hp - 30;
         }
+        if (hp < 0) {
+            throw new IllegalStateException();
+        }
     }
+
 
 
 }

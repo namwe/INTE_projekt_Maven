@@ -328,7 +328,15 @@ class PlayerTest {
 
     @Test
     void Throw_ISE_If_Player_Is_Attacking_Monster_That_Will_Results_In_Negative_Hp() {
-
+        Player p1 = new Player( "Gladiator", playerChar, position, map);
+        p1.getPlayerStats().setHp(5);
+        Equipment sword = new Sword(new StatEquipment(3, 4));
+        p1.addToInventory(sword);
+        p1.putOn(sword);
+        Monster vampire = new Vampire(Now.getInstance());
+        assertThrows(IllegalStateException.class, () -> {
+            p1.damage(vampire);
+        });
     }
 
     @Test
