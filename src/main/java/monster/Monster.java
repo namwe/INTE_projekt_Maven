@@ -41,7 +41,6 @@ public abstract class Monster extends Movable  {
 		return monsterType; 
 	}
 	
-	
 	public String toString() {
 		return this.getMonsterType() + " " + strength + " " + speed + " " + aggressiveness;
 	}

@@ -23,6 +23,10 @@ public class uiMonster {
 		 
 		StatEquipment statEqu = new StatEquipment(0, 0);
 		Equipment scroll = new Scroll(statEqu);
+		Equipment sword = new Sword(statEqu);
+		Ghost g = new Ghost(4999,Now.getInstance()); 
+		System.out.println(g);
+		g.hurtMonster(scroll);
 		
 		Now n = Now.getInstance();
 		System.out.println(n.isNight()); 
@@ -34,11 +38,12 @@ public class uiMonster {
 		
 		Frankenstein  f = Frankenstein.getInstance(); 
 		System.out.println(f);
-		
-		Ghost g = new Ghost(500,Now.getInstance()); 
+		/*
+		Ghost g = new Ghost(4999,Now.getInstance()); 
 		System.out.println(g);
-		
-		
+		g.hurtMonster(sword);
+		System.out.println(g);
+		*/
 		/*
 		f.hurtMonster();
 		System.out.println(f);
