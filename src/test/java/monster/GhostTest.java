@@ -21,6 +21,7 @@ class GhostTest {
 		assertEquals(60, g.getSpeed());
 		assertEquals(20, g.getAggressiveness());
 		assertEquals(4999, g.getAge());
+		assertEquals(TypeOfMonster.GHOST, g.getMonsterType());
 		assertFalse(g.isInvisible(new NowMockMidnightTrue()));
 	}
 

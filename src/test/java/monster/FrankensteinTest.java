@@ -11,13 +11,13 @@ import character.StatEquipment;
 import character.Sword;
 
 
-//100% coverage men måste nog hitta ett sätt att sätta insatnsen till null efter varje test. 
-//Nu alternativet att återställa instansvariabeln strength till ursprunget @AfterEach
+ 
+//Singelton - instansvariabeln strength återställs till ursprunget @AfterEach
 
 class FrankensteinTest {
 
 	StatEquipment statEqu = new StatEquipment(5, 5);
-	Equipment equ = new Sword(statEqu);
+	
 
 	@Test
 	void FrankensteinGetInstanceSetsCorrectValuesTest() {
@@ -25,6 +25,7 @@ class FrankensteinTest {
 		assertEquals(80, f.getStrength());
 		assertEquals(20, f.getSpeed());
 		assertEquals(30, f.getAggressiveness());
+		assertEquals(TypeOfMonster.FRANKENSTEIN, f.getMonsterType());
 	}
 
 	@Test
@@ -34,26 +35,37 @@ class FrankensteinTest {
 		assertSame(f1, f2);
 	}
 
-	@Test
+	@Test //Överflödigt
 	void FrankensteinGetInstanceReturnsNotNullInstanceTest() {
 		Frankenstein f1 = Frankenstein.getInstance();
-		Frankenstein f2 = Frankenstein.getInstance();
-		assertNotNull(f2);
+		assertNotNull(f1);
 	}
-
+	
+	
 	@Test
-	void hurtMonsterDecreasesStrengthBy5IncreasesAggBy5Test() {
+	void reviveDeadFrankensteinTest() {
 		Frankenstein f = Frankenstein.getInstance();
-		f.hurtMonster(equ);
+		f.strength = 0;
+		f.reviveFromDead();
+		assertEquals(80, f.getStrength());
+		assertEquals(20, f.getSpeed());
+		assertEquals(30, f.getAggressiveness());
+	}
+	
+	
+	@Test
+	void hurtMonsterSwordDecreasesStrengthBy5IncreasesAggBy5Test() {
+		Frankenstein f = Frankenstein.getInstance();
+		f.hurtMonster(new Sword(statEqu));
 		assertEquals(75, f.getStrength());
 		assertEquals(35, f.getAggressiveness());
 	}
 
 	@Test
-	void hurtMonsterKillsIfStrengthLessThan6Test() {
+	void hurtMonsterKillsFrankensteinIfStrengthLessThan5Test() {
 		Frankenstein f = Frankenstein.getInstance();
-		f.strength = 5;
-		f.hurtMonster(equ);
+		f.strength = 4;
+		f.hurtMonster(new Sword(statEqu));
 		assertEquals(0, f.getStrength());
 		assertEquals(0, f.getSpeed());
 		assertEquals(0, f.getAggressiveness());
@@ -72,53 +84,37 @@ class FrankensteinTest {
 	
 
 	@Test
-	void recoverAfter15SecIncreasesStrengthBy5DecreasesAggBy5Test() {
+	void monsterIncreasesStrengthBy5After15SecITest() {
 		Frankenstein f = Frankenstein.getInstance();
-		f.hurtMonster(equ);
-		f.hurtMonster(equ);
+		f.hurtMonster(new Sword(statEqu));
+		f.hurtMonster(new Sword(statEqu));
 		try {
 			Thread.sleep(1000 * 15);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		f.hurtMonster(equ);
-		assertEquals(70, f.getStrength());
+		assertEquals(75, f.getStrength());
 		assertEquals(40, f.getAggressiveness());
 	}
 
+
 	@Test
-	void recoverAfter25SecIncreasesStrengthBy5DecreasesAggBy5Test() {
+	void monsterRevivedAfter25SecITest() {
 		Frankenstein f = Frankenstein.getInstance();
-		f.hurtMonster(equ);
-		f.hurtMonster(equ);
+		f.hurtMonster(new Sword(statEqu));
+		f.hurtMonster(new Sword(statEqu));
+		f.hurtMonster(new Sword(statEqu));
 		try {
 			Thread.sleep(1000 * 25);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		f.hurtMonster(equ);
 		assertEquals(80, f.getStrength());
 		assertEquals(20, f.getSpeed());
 		assertEquals(30, f.getAggressiveness());
 	}
 
-	@Test
-	void reviveDeadFrankensteinTest() {
-		Frankenstein f = Frankenstein.getInstance();
-		f.strength = 0;
-		f.reviveFromDead();
-		assertEquals(80, f.getStrength());
-		assertEquals(20, f.getSpeed());
-		assertEquals(30, f.getAggressiveness());
-	}
 
-	@Test
-	void reviveLivingFrankensteinTest() {
-		Frankenstein f = Frankenstein.getInstance();
-		f.strength = 25;
-		f.reviveFromDead();
-		assertEquals(25, f.getStrength());
-	}
 
 	@AfterEach
 	public void resetValues() {
@@ -126,6 +122,7 @@ class FrankensteinTest {
 		f.strength = 80;
 		f.speed = 20;
 		f.aggressiveness = 30;
+		f.lastAttackTimeStamp = 0;
 	}
 
 }

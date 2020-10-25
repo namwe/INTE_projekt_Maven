@@ -6,21 +6,80 @@ import character.StatEquipment;
 import character.Sword;
 
 public class uiMonster {
-	
 	public static void main (String[] args) {
+		
+		StatEquipment statEqu = new StatEquipment(0, 10);
+		Equipment scroll = new Scroll(statEqu);
+		Equipment sword = new Sword(statEqu);
+		
+		Frankenstein  f = Frankenstein.getInstance(); 
+		System.out.println(f + " **80");
+		
+		f.strength = 0;
+		try {
+			Thread.sleep(1000 * 15);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println(f);
+		f.reviveFromDead();
+		
+		System.out.println(f);
+		/*
+		System.out.println(f);
+		f.hurtMonster(sword);
+		System.out.println(f);
+		f.hurtMonster(sword);
+		System.out.println(f);
+		f.hurtMonster(sword);
+		System.out.println(f);
+		System.out.println("sover");
+		try {
+			Thread.sleep(1000 * 25);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println(f);
+		f.hurtMonster(sword);
+		System.out.println(f);
+		f.hurtMonster(sword);
+		System.out.println(f);
+		f.hurtMonster(sword);
+		System.out.println(f);
+		System.out.println("sover");
+			
+		try {
+			Thread.sleep(1000 * 15);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println(f);
+		f.hurtMonster(sword);
+		System.out.println(f);
+		f.hurtMonster(sword);
+		System.out.println(f);
+		f.hurtMonster(sword);
+		System.out.println(f);
+		f.hurtMonster(sword);
+		System.out.println(f);
+		System.out.println(f.getStrength());
+		System.out.println(f.getStrength());
+		System.out.println(f.getStrength());
+		System.out.println(f.getStrength());
+		
 		
 		//Ghost g = new Ghost(500,Now.getInstance()); 
 		
- 
-		
-		 Vampire v = new Vampire(Now.getInstance()); 
-		 System.out.println(v); 
+ 	
+		 //Vampire v = new Vampire(Now.getInstance()); 
+		// System.out.println(v); 
 		 //StatEquipment statEqu = new StatEquipment(5, 5);
 		// Equipment scroll = new Scroll (statEqu);
 		
 		//StatEquipment statSword = new StatEquipment(5, 5);
 		//Equipment sword = new Sword(statEqu);
-		 
+		/* 
 		StatEquipment statEqu = new StatEquipment(0, 10);
 		Equipment scroll = new Scroll(statEqu);
 		Equipment sword = new Sword(statEqu);
