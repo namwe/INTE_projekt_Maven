@@ -1,5 +1,7 @@
 package level;
 
+import java.util.Arrays;
+
 public class Room {
 
     public static final int WIDTH = 9, HEIGHT = 9;
@@ -85,5 +87,13 @@ public class Room {
         return sb.toString();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Room room = (Room) o;
+
+        return Arrays.deepEquals(layout, room.layout);
+    }
 }
