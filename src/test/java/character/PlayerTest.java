@@ -223,7 +223,26 @@ class PlayerTest {
         p1.putOn(sword);
         p1.damage(Frankenstein.getInstance());
         assertEquals(80, p1.getPlayerStats().getHp());
+    }
 
+    @Test
+    void Player_Attacking_Ghost_With_Equipment_Equipped_Results_In_Ten_Less_Hp() {
+        Player p1 = new Player( "Gladiator", playerChar, position, map);
+        Equipment sword = new Sword(new StatEquipment(5, 8));
+        p1.addToInventory(sword);
+        p1.putOn(sword);
+        p1.damage(Frankenstein.getInstance());
+        assertEquals(80, p1.getPlayerStats().getHp());
+    }
+
+    @Test
+    void Player_Attacking_Vampire_With_Equipment_Equipped_Results_In_Thirty_Less_Hp() {
+        Player p1 = new Player( "Gladiator", playerChar, position, map);
+        Equipment sword = new Scroll(new StatEquipment(5, 8));
+        p1.addToInventory(sword);
+        p1.putOn(sword);
+        p1.damage(Frankenstein.getInstance());
+        assertEquals(80, p1.getPlayerStats().getHp());
     }
 
     @Test
