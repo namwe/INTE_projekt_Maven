@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import character.Equipment;
 import character.Scroll;
 import character.StatEquipment;
+import character.Sword;
 
 class VampireTest {
 
@@ -99,6 +100,19 @@ class VampireTest {
 		assertEquals(NIGHTAGRESSIVENESS + 5, v.getAggressiveness());
 		assertEquals(1, v.getSpeed());
 	}
+	
+	@Test
+	void hurtMonsterEquimpmentNotInstanceOfScrollThrowsExceptionTest() {
+		Monster v = new Vampire(new NowMockNightTrue());
+		StatEquipment statEqu = new StatEquipment(0, 10);		
+		assertThrows(IllegalEquipmentException.class, () -> {
+			Equipment sword = new Sword(statEqu);	
+			v.hurtMonster(sword);
+			});
+	}
+	
+	
+
 
 	private class NowMockNightFalse extends Now {
 		private NowMockNightFalse() {

@@ -21,7 +21,7 @@ public class uiMonster {
 		//StatEquipment statSword = new StatEquipment(5, 5);
 		//Equipment sword = new Sword(statEqu);
 		 
-		StatEquipment statEqu = new StatEquipment(0, 0);
+		StatEquipment statEqu = new StatEquipment(0, 22);
 		Equipment scroll = new Scroll(statEqu);
 		Equipment sword = new Sword(statEqu);
 		Ghost g = new Ghost(4999,Now.getInstance()); 
