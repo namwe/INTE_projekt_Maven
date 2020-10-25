@@ -5,10 +5,6 @@ public class Room {
     public static final int WIDTH = 9, HEIGHT = 9;
     private RoomTile[][] layout;
 
-    public Room(){
-        this(RoomType.DEFAULT_ROOM);
-    }
-
     public Room(RoomTile[][] layout) {
         if (!dimensionsAreOk(layout)) {
             throw new IllegalArgumentException();
