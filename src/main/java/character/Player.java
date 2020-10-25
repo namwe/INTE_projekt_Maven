@@ -48,16 +48,16 @@ public class Player extends Movable implements Attackable {
         return equipments.size();
     }
 
+    public Stat getPlayerStats() {
+        return playerStats;
+    }
+
     public void addToInventory(Equipment equipment) {
         equipments.add(equipment);
     }
 
     public Equipment getEquipmentWithSpecificStats(Equipment eq) {
         for (Equipment equipment : equipments) {
-            /*if (eq.getStats().getCondition() == equipment.getStats().getCondition() && eq.getStats().getMana() == equipment.getStats().getMana()) {
-                return equipment;
-
-             */
             if (eq.equals(equipment)) {
                 return equipment;
             }
@@ -65,19 +65,17 @@ public class Player extends Movable implements Attackable {
         throw new IllegalArgumentException();
     }
 
-    private void checkBooleanOnEquipments(Equipment equipment) {
+    private void checkHowManyEquipmentsAreEquipped(Equipment equipment) {
         if (equipments.size() <= 1) {
             return;
         }
 
+        EquipmentEnum eqType = EquipmentEnum.DEFAULT;
+        eqType = eqType.getType(equipment);
 
+        int count = getCounterForEquipments(eqType);
 
-        String chooser = getChooserString(equipment);
-
-        int count = getCounterForEquipments(chooser);
-
-
-        if (chooser.equals("sword")) {
+        if (eqType == EquipmentEnum.SWORD) {
             if (count >= 2) {
                 throw new IllegalStateException();
             }
@@ -86,30 +84,27 @@ public class Player extends Movable implements Attackable {
                 throw new IllegalStateException();
             }
         }
-
-
-
     }
 
-    private int getCounterForEquipments(String chooser) {
+    private int getCounterForEquipments(EquipmentEnum equipmentEnum) {
         int count = 0;
         for (Equipment loopEq : equipments) {
-            switch (chooser) {
-                case "armor":
+            switch (equipmentEnum) {
+                case ARMOR:
                     if (loopEq instanceof Armor) {
                         if (loopEq.isEquipped()) {
                             count++;
                         }
                     }
                     break;
-                case "scroll":
+                case SCROLL:
                     if (loopEq instanceof Scroll) {
                         if (loopEq.isEquipped()) {
                             count++;
                         }
                     }
                     break;
-                case "sword":
+                case SWORD:
                     if (loopEq instanceof Sword) {
                         if (loopEq.isEquipped()) {
                             count++;
@@ -121,23 +116,12 @@ public class Player extends Movable implements Attackable {
         return count;
     }
 
-    private String getChooserString(Equipment equipment) {
-        String chooser = "";
-        if (equipment instanceof Armor) {
-            chooser = "armor";
-        } else if (equipment instanceof Scroll) {
-            chooser = "scroll";
-        } else if (equipment instanceof Sword) {
-            chooser = "sword";
-        }
-        return chooser;
-    }
 
-    //*** En metod som kollar om det går att sätta på ett equipment ***//
+    //*** En metod som kollar om det går att sätta på ett equipment och om det stämmer sätter då på det ***//
     public void putOn(Equipment eq) {
 
         eq = getEquipmentWithSpecificStats(eq);
-        checkBooleanOnEquipments(eq);
+        checkHowManyEquipmentsAreEquipped(eq);
 
 
         eq.setEquipped(true);
@@ -145,22 +129,23 @@ public class Player extends Movable implements Attackable {
 
     public void damage(Monster monster) {
         playerStats.takeDmg(monster);
-        int count = 0;
+        boolean hasEquippedEquipments = false;
         for (Equipment equipment : equipments) {
             if (equipment.isEquipped()) {
                 if (equipment instanceof Sword) {
-                    count++;
+                    hasEquippedEquipments = true;
                     equipment.combat(monster, equipment);
                 } else if (equipment instanceof Scroll) {
-                    count++;
+                    hasEquippedEquipments = true;
                     equipment.combat(monster, equipment);
 
                 }
             }
         }
-        if (count == 0) {
+        if (!hasEquippedEquipments) {
             throw new IllegalStateException();
         }
+
     }
 
 

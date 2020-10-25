@@ -23,7 +23,7 @@ public class StatEquipment  {
 
     }
 
-    public void takeDmg(Monster monster) {
+    public void takeConditionDmg(Monster monster) {
         if (monster instanceof Ghost) {
             condition = condition - 1;
         } else if (monster instanceof Frankenstein) {

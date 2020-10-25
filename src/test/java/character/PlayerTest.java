@@ -3,8 +3,7 @@ package character;
 import static org.junit.jupiter.api.Assertions.*;
 
 import level.*;
-import monster.*;
-import org.junit.jupiter.api.Disabled;
+import monster.*;;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -58,6 +57,18 @@ class PlayerTest {
         assertThrows(IllegalStateException.class, () -> {
             p1.putOn(scroll2);
         });
+    }
+
+    @Test
+    public void Throw_IAE_When_Similar_Equipment_Is_In_Inventory_Than_The_One_Being_Equipped() {
+        Player p1 = new Player("Gladiator", playerChar, position, map);
+        Equipment sword = new Sword(new StatEquipment(2,9));
+        p1.addToInventory(sword);
+        Equipment armor = new Armor(new StatEquipment(2,9));
+        assertThrows(IllegalArgumentException.class, () -> {
+           p1.putOn(armor);
+        });
+
     }
 
     @Test
@@ -215,19 +226,38 @@ class PlayerTest {
         });
     }
 
-    @Disabled
-    void Player_Attacking_Frankenstein_With_Sword_Results_In_Thirty_Less_Hp() {
+    @Test
+    void Player_Attacking_Frankenstein_With_Equipment_Equipped_Results_In_Twenty_Less_Hp() {
         Player p1 = new Player( "Gladiator", playerChar, position, map);
         Equipment sword = new Sword(new StatEquipment(5, 8));
         p1.addToInventory(sword);
         p1.putOn(sword);
         p1.damage(Frankenstein.getInstance());
-       // assertEquals(70, p1.getPlayerStats().getHp());
-
+        assertEquals(80, p1.getPlayerStats().getHp());
     }
 
     @Test
-    void Player_Attacking_Ghost_With_Sword_Decreases_Condition_With_One() {
+    void Player_Attacking_Ghost_With_Equipment_Equipped_Results_In_Ten_Less_Hp() {
+        Player p1 = new Player( "Gladiator", playerChar, position, map);
+        Equipment sword = new Sword(new StatEquipment(5, 8));
+        p1.addToInventory(sword);
+        p1.putOn(sword);
+        p1.damage(new Ghost(21, Now.getInstance()));
+        assertEquals(90, p1.getPlayerStats().getHp());
+    }
+
+    @Test
+    void Player_Attacking_Vampire_With_Equipment_Equipped_Results_In_Thirty_Less_Hp() {
+        Player p1 = new Player( "Gladiator", playerChar, position, map);
+        Equipment scroll = new Scroll(new StatEquipment(5, 8));
+        p1.addToInventory(scroll);
+        p1.putOn(scroll);
+        p1.damage(new Vampire(Now.getInstance()));
+        assertEquals(70, p1.getPlayerStats().getHp());
+    }
+
+    @Test
+    void Player_Attacking_Ghost_With_Sword_Decreases_Condition_By_One() {
         Player p1 = new Player( "Gladiator", playerChar, position, map);
         Equipment sword = new Sword(new StatEquipment(3, 4));
         p1.addToInventory(sword);
@@ -237,7 +267,7 @@ class PlayerTest {
     }
 
     @Test
-    void Player_Attacking_Frankenstein_With_Sword_Decreases_Condition_With_Two() {
+    void Player_Attacking_Frankenstein_With_Sword_Decreases_Condition_By_Two() {
         Player p1 = new Player( "Gladiator", playerChar, position, map);
         Equipment sword = new Sword(new StatEquipment(6, 4));
         p1.addToInventory(sword);
@@ -247,7 +277,7 @@ class PlayerTest {
     }
 
     @Test
-    void Player_Attacking_Vampire_With_Sword_Decreases_Condition_With_Three() {
+    void Player_Attacking_Vampire_With_Sword_Decreases_Condition_By_Three() {
         Player p1 = new Player( "Gladiator", playerChar, position, map);
         Equipment sword = new Sword(new StatEquipment(9, 4));
         p1.addToInventory(sword);
@@ -295,6 +325,20 @@ class PlayerTest {
             p1.damage(new Ghost(20, Now.getInstance()));
         });
     }
+
+    @Test
+    void Throw_ISE_If_Player_Is_Attacking_Monster_That_Will_Results_In_Negative_Hp() {
+        Player p1 = new Player( "Gladiator", playerChar, position, map);
+        p1.getPlayerStats().setHp(5);
+        Equipment sword = new Sword(new StatEquipment(3, 4));
+        p1.addToInventory(sword);
+        p1.putOn(sword);
+        Monster vampire = new Vampire(Now.getInstance());
+        assertThrows(IllegalStateException.class, () -> {
+            p1.damage(vampire);
+        });
+    }
+
 
     @Test
     void Player_Attacking_With_Equipment_Equipped_That_Is_Not_Sword_Or_Scroll_Results_In_ISE() {

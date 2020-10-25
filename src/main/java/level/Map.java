@@ -1,6 +1,8 @@
 package level;
 
 
+import java.util.Arrays;
+
 public class Map {
     public static final int WIDTH = 2, HEIGHT = 2;
     private Room[][] rooms;
@@ -90,5 +92,15 @@ public class Map {
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Map map = (Map) o;
+
+        return Arrays.deepEquals(rooms, map.rooms);
     }
 }
