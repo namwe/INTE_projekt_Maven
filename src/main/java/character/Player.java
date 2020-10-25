@@ -58,10 +58,6 @@ public class Player extends Movable implements Attackable {
 
     public Equipment getEquipmentWithSpecificStats(Equipment eq) {
         for (Equipment equipment : equipments) {
-            /*if (eq.getStats().getCondition() == equipment.getStats().getCondition() && eq.getStats().getMana() == equipment.getStats().getMana()) {
-                return equipment;
-
-             */
             if (eq.equals(equipment)) {
                 return equipment;
             }
@@ -149,20 +145,20 @@ public class Player extends Movable implements Attackable {
 
     public void damage(Monster monster) {
         playerStats.takeDmg(monster);
-        int count = 0;
+        boolean hasEquippedEquipments = false;
         for (Equipment equipment : equipments) {
             if (equipment.isEquipped()) {
                 if (equipment instanceof Sword) {
-                    count++;
+                    hasEquippedEquipments = true;
                     equipment.combat(monster, equipment);
                 } else if (equipment instanceof Scroll) {
-                    count++;
+                    hasEquippedEquipments = true;
                     equipment.combat(monster, equipment);
 
                 }
             }
         }
-        if (count == 0) {
+        if (!hasEquippedEquipments) {
             throw new IllegalStateException();
         }
 

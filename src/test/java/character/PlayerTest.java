@@ -60,6 +60,18 @@ class PlayerTest {
     }
 
     @Test
+    public void Throw_IAE_When_Similar_Equipment_Is_In_Inventory_Than_The_One_Being_Equipped() {
+        Player p1 = new Player("Gladiator", playerChar, position, map);
+        Equipment sword = new Sword(new StatEquipment(2,9));
+        p1.addToInventory(sword);
+        Equipment armor = new Armor(new StatEquipment(2,9));
+        assertThrows(IllegalArgumentException.class, () -> {
+           p1.putOn(armor);
+        });
+
+    }
+
+    @Test
     public void Adding_Two_Equipments_Results_In_Three_In_Total_In_Inventory() {
         Player p1 = new Player( "Gladiator", playerChar, position, map);
         p1.addToInventory(new Armor(new StatEquipment(4,9)));
