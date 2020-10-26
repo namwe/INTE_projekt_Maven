@@ -2,6 +2,7 @@ package monster;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 import org.junit.jupiter.api.Test;
 
 import character.Equipment;
@@ -40,6 +41,7 @@ class GhostTest {
 		});
 	}
 
+	
 	@Test
 	void constructorArgumentTooBigThrowsIAEATest() {
 		assertThrows(IllegalArgumentException.class, () -> {
@@ -136,6 +138,7 @@ class GhostTest {
 
 	private class NowMockMidnightFalse extends Now {
 		private NowMockMidnightFalse() {
+			
 		}
 
 		@Override

@@ -35,29 +35,52 @@ class FrankensteinTest {
 		assertSame(f1, f2);
 	}
 
-	@Test //Överflödigt
+	@Test //Överflödigt?
 	void FrankensteinGetInstanceReturnsNotNullInstanceTest() {
 		Frankenstein f1 = Frankenstein.getInstance();
 		assertNotNull(f1);
 	}
 	
 	
+
 	@Test
-	void reviveDeadFrankensteinTest() {
+	void T1Statemachine() {
 		Frankenstein f = Frankenstein.getInstance();
-		f.strength = 0;
+		Equipment sword = new Sword(statEqu);
+		int i = 0; 
+		while (i < 16) {
+		f.hurtMonster(sword);
+		i++;
+		}
 		f.reviveFromDead();
 		assertEquals(80, f.getStrength());
 		assertEquals(20, f.getSpeed());
 		assertEquals(30, f.getAggressiveness());
 	}
 	
-	
 	@Test
-	void hurtMonsterSwordDecreasesStrengthBy5IncreasesAggBy5Test() {
+	void T2Statemachine() { 
 		Frankenstein f = Frankenstein.getInstance();
 		f.hurtMonster(new Sword(statEqu));
+		try {
+			Thread.sleep(1000 * 25);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		assertEquals(80, f.getStrength());
+		assertEquals(20, f.getSpeed());
+		assertEquals(30, f.getAggressiveness());
+		f.hurtMonster(new Sword(statEqu));
 		assertEquals(75, f.getStrength());
+		assertEquals(20, f.getSpeed());
+		assertEquals(35, f.getAggressiveness());
+		try {
+			Thread.sleep(1000 * 15);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		assertEquals(80, f.getStrength());
+		assertEquals(20, f.getSpeed());
 		assertEquals(35, f.getAggressiveness());
 	}
 
@@ -81,40 +104,6 @@ class FrankensteinTest {
 			f.hurtMonster(scroll);
 			});
 	}
-	
-
-	@Test
-	void monsterIncreasesStrengthBy5After15SecITest() {
-		Frankenstein f = Frankenstein.getInstance();
-		f.hurtMonster(new Sword(statEqu));
-		f.hurtMonster(new Sword(statEqu));
-		try {
-			Thread.sleep(1000 * 15);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		assertEquals(75, f.getStrength());
-		assertEquals(40, f.getAggressiveness());
-	}
-
-
-	@Test
-	void monsterRevivedAfter25SecITest() {
-		Frankenstein f = Frankenstein.getInstance();
-		f.hurtMonster(new Sword(statEqu));
-		f.hurtMonster(new Sword(statEqu));
-		f.hurtMonster(new Sword(statEqu));
-		try {
-			Thread.sleep(1000 * 25);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		assertEquals(80, f.getStrength());
-		assertEquals(20, f.getSpeed());
-		assertEquals(30, f.getAggressiveness());
-	}
-
-
 
 	@AfterEach
 	public void resetValues() {

@@ -31,8 +31,8 @@ class VampireTest {
 	void VampireConstructorSetsCorrectWhenDayTest() {
 		Vampire v = new Vampire(new NowMockNightFalse());
 		assertEquals(MINSTRENGTH, v.getStrength());
-		assertEquals(5, v.getSpeed());
-		assertEquals(5, v.getAggressiveness());
+		assertEquals(DAYSPEED, v.getSpeed());
+		assertEquals(DAYAGRESSIVENESS, v.getAggressiveness());
 	}
 
 	@Test
@@ -123,7 +123,7 @@ class VampireTest {
 	}
 
 	private class NowMockNightTrue extends Now {
-		private NowMockNightTrue() {
+		private NowMockNightTrue() { 
 		}
 
 		@Override

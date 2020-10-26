@@ -3,8 +3,8 @@ package monster;
 import java.util.Calendar;
 
 public class Now {
-	protected boolean night; // privat?
-	protected boolean midnight = false; // privat?
+	private boolean night; // privat?
+	private boolean midnight = false; // privat?
 	private static Now INSTANCE = null;
 
 	public static Now getInstance() {
@@ -14,6 +14,8 @@ public class Now {
 		return INSTANCE;
 	}
 
+	//annan konstruktor?? 
+	
 	protected Now() { // ok med protected för att kunna skapa upp mock-instanser i subklasserna?
 		Calendar rightNow = Calendar.getInstance();
 		int hour = rightNow.get(Calendar.HOUR_OF_DAY);
@@ -24,6 +26,7 @@ public class Now {
 		}
 	}
 
+	
 	public boolean isNight() {
 		return night;
 	}

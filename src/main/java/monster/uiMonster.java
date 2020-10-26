@@ -13,9 +13,30 @@ public class uiMonster {
 		Equipment sword = new Sword(statEqu);
 		
 		Frankenstein  f = Frankenstein.getInstance(); 
-		System.out.println(f + " **80");
 		
-		f.strength = 0;
+
+		Frankenstein  f1 = Frankenstein.getInstance(); 
+		
+		f.hurtMonster(sword);
+		f.hurtMonster(sword);
+		f.hurtMonster(sword);
+		
+		System.out.println(f1 + "***testar");
+		
+		int i = 0; 
+		while (i < 16) {
+		System.out.println(f);
+		f.hurtMonster(sword);
+		i++;
+		}
+		
+		System.out.println(f);
+		
+		f.reviveFromDead();
+		System.out.println(f);
+		
+		
+		/*
 		try {
 			Thread.sleep(1000 * 15);
 		} catch (InterruptedException e) {
@@ -23,8 +44,8 @@ public class uiMonster {
 		}
 		System.out.println(f);
 		f.reviveFromDead();
+		*/
 		
-		System.out.println(f);
 		/*
 		System.out.println(f);
 		f.hurtMonster(sword);
