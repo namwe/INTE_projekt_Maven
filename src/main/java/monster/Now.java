@@ -3,8 +3,8 @@ package monster;
 import java.util.Calendar;
 
 public class Now {
-	private boolean night; 
-	private boolean midnight = false; 
+	protected boolean night; 
+	protected boolean midnight = false; 
 	private static Now INSTANCE = null;
 	
 	public static Now getInstance() {
@@ -20,12 +20,7 @@ public class Now {
 		setNight(c);
 		setMidnight(c);
 	}
-	
-	protected Now(int hour) { 
 		
-	}
-	
-	
 	private void setNight(Calendar c){
 		int hour = c.get(Calendar.HOUR_OF_DAY);
 		if (hour < 5 || hour > 21) // "natt" mellan 5 på morgonen och 22 på kvällen
