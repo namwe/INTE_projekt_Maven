@@ -217,7 +217,7 @@ class PlayerTest {
 
     @Test
     void Throw_ISE_When_Speed_Is_Increased_To_Higher_Than_Ten() {
-        Player p1 = new Player( "Gladiator", playerChar, position, map);;
+        Player p1 = new Player( "Gladiator", playerChar, position, map);
         for (int i = 0; i < 9; i++) {
             p1.increaseSpeed();
         }

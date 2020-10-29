@@ -129,20 +129,20 @@ public class Player extends Movable implements Attackable {
 
     public void damage(Monster monster) {
         playerStats.takeDmg(monster);
-        boolean hasEquippedEquipments = false;
+        boolean noEquippedEquipments = true;
         for (Equipment equipment : equipments) {
             if (equipment.isEquipped()) {
                 if (equipment instanceof Sword) {
-                    hasEquippedEquipments = true;
+                    noEquippedEquipments = false;
                     equipment.combat(monster, equipment);
                 } else if (equipment instanceof Scroll) {
-                    hasEquippedEquipments = true;
+                    noEquippedEquipments = false;
                     equipment.combat(monster, equipment);
 
                 }
             }
         }
-        if (!hasEquippedEquipments) {
+        if (noEquippedEquipments) {
             throw new IllegalStateException();
         }
 
