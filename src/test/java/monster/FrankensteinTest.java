@@ -3,6 +3,7 @@ package monster;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import character.Equipment;
@@ -57,7 +58,8 @@ class FrankensteinTest {
 		assertEquals(20, f.getSpeed());
 		assertEquals(30, f.getAggressiveness());
 	}
-	
+
+	@Disabled
 	@Test
 	void T2Statemachine() { 
 		Frankenstein f = Frankenstein.getInstance();
