@@ -1,9 +1,10 @@
 package level;
 
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MovableTest {
     private class ConcreteMovable extends Movable{
@@ -21,6 +22,14 @@ public class MovableTest {
         assertEquals('T', movable.getMap().getTile(position).getCharRepresentation());
         assertEquals(position, movable.getPosition());
         assertEquals(map, movable.getMap());
+    }
+
+    @Test
+    void movableColition(){
+        Position secondMovablePos = new Position(0,0, 1, 2);
+        Movable secondMovable = new ConcreteMovable('M', secondMovablePos, map);
+        movable.move(Direction.EAST);
+        assertEquals(movable, map.getTile(position));
     }
 
     @ParameterizedTest
