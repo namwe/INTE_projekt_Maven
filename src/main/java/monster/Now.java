@@ -29,7 +29,7 @@ public class Now {
 
 	private void setMidnight(Calendar c){
 		int hour = c.get(Calendar.HOUR_OF_DAY);
-		if (hour == 24)
+		if (hour == 0)
 			midnight = true;			
 	}
 	

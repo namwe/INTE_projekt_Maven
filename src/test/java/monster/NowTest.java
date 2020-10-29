@@ -35,7 +35,7 @@ class NowTest {
 		Now n1 = Now.getInstance();
 		Calendar c = Calendar.getInstance();
 		int hour = c.get(Calendar.HOUR_OF_DAY);
-		if (hour == 24) // "natt" mellan 5 på morgonen och 22 på kvällen
+		if (hour == 0) // "natt" mellan 5 på morgonen och 22 på kvällen
 		assertTrue(n1.midnight); 
 		else {
 			assertFalse(n1.midnight);

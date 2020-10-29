@@ -95,7 +95,6 @@ class VampireTest {
 		StatEquipment statEqu = new StatEquipment(0, 10);
 		Equipment scroll = new Scroll(statEqu);
 		v.hurtMonster(scroll);
-		System.out.println(v);
 		assertEquals(MAXSTRENGTH - 5, v.getStrength());
 		assertEquals(NIGHTAGRESSIVENESS + 5, v.getAggressiveness());
 		assertEquals(1, v.getSpeed());
